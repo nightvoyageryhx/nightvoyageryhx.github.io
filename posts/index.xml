@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>All Posts - FixIt</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>All Posts | FixIt</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 01 Jan 1970 08:33:42 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
-  <title>1</title>
-  <link>http://localhost:1313/posts/my-first-post/</link>
-  <pubDate>Thu, 01 Jan 1970 08:33:42 &#43;0800</pubDate>
+    <title>All Posts - Nightvoyager夜航星</title>
+    <link>https://nightvoyageryhx.github.io/posts/</link>
+    <description>All Posts | Nightvoyager夜航星</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>夜航星</copyright><lastBuildDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>Hello World</title>
+  <link>https://nightvoyageryhx.github.io/posts/hello-world/</link>
+  <pubDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</pubDate>
   <author>Author</author>
-  <guid>http://localhost:1313/posts/my-first-post/</guid>
-  <description><![CDATA[尝试建站]]></description>
+  <guid>https://nightvoyageryhx.github.io/posts/hello-world/</guid>
+  <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

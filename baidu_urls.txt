@@ -1,1 +1,1 @@
-http://localhost:1313/posts/my-first-post/
+https://nightvoyageryhx.github.io/posts/hello-world/
