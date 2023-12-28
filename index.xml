@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Nightvoyager夜航星</title>
+    <title>夜航星</title>
     <link>https://nightvoyageryhx.github.io/</link>
-    <description>Nightvoyager夜航星</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>夜航星</copyright><lastBuildDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</lastBuildDate>
+    <description>夜航星</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</lastBuildDate>
       <atom:link href="https://nightvoyageryhx.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
   <title>Hello World</title>
   <link>https://nightvoyageryhx.github.io/posts/hello-world/</link>
   <pubDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</pubDate>
-  <author>Author</author>
+  <author>夜航星</author>
   <guid>https://nightvoyageryhx.github.io/posts/hello-world/</guid>
   <description><![CDATA[]]></description>
 </item>

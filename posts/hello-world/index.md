@@ -8,6 +8,6 @@
 
 ---
 
-> Author: <no value>  
+> 作者: <no value>  
 > URL: https://nightvoyageryhx.github.io/posts/hello-world/  
 
