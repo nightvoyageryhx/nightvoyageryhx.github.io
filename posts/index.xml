@@ -3,7 +3,15 @@
     <title>所有文章 - 夜航星</title>
     <link>https://nightvoyageryhx.github.io/posts/</link>
     <description>所有文章 | 夜航星</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Sun, 07 Jan 2024 15:18:21 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>通信原理笔记</title>
+  <link>https://nightvoyageryhx.github.io/posts/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
+  <pubDate>Sun, 07 Jan 2024 15:18:21 &#43;0800</pubDate>
+  <author>夜航星</author>
+  <guid>https://nightvoyageryhx.github.io/posts/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>Hello World</title>
   <link>https://nightvoyageryhx.github.io/posts/hello-world/</link>
   <pubDate>Thu, 28 Dec 2023 13:21:44 &#43;0800</pubDate>
