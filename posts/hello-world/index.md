@@ -8,6 +8,6 @@
 
 ---
 
-> 作者: <no value>  
+> 作者: 夜航星  
 > URL: https://nightvoyageryhx.github.io/posts/hello-world/  
 
