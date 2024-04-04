@@ -9,7 +9,7 @@
 
 push之后有以下报错，没有成功
 
-```cmd
+```bash
 ssh: Could not resolve hostname github.com: Name or service not known
 fatal: Could not read from remote repository.
 ```
@@ -20,7 +20,7 @@ fatal: Could not read from remote repository.
 
 于是 ping github.com，果然 ping 不通
 
-```
+```bash
 C:\Users\hugoblog\public>ping github.com
 正在 Ping github.com [20.205.243.166] 具有 32 字节的数据:
 请求超时。
@@ -55,7 +55,7 @@ C:\Users\hugoblog\public>ping github.com
 
 保存之后，重新 ping github.com
 
-```
+```bash
 C:\Users\hugoblog\public>ping github.com
 
 正在 Ping github.com [140.82.113.4] 具有 32 字节的数据:

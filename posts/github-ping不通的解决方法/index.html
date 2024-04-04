@@ -161,8 +161,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">ssh: Could not resolve hostname github.com: Name or service not known
-</span></span><span class="line"><span class="cl">fatal: Could not read from remote repository.</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh: Could not resolve hostname github.com: Name or service not known
+</span></span><span class="line"><span class="cl">fatal: Could not <span class="nb">read</span> from remote repository.</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之前我也出现过这种报错，一般是代理占用了端口导致不成功，然而这次没有使用代理，也失败了，推测也是网络问题。</p>
 <p>于是 ping github.com，果然 ping 不通</p>
@@ -176,8 +176,8 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">C:\Users\hugoblog\public&gt;ping github.com
-</span></span><span class="line"><span class="cl">正在 Ping github.com [20.205.243.166] 具有 32 字节的数据:
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\h</span>ugoblog<span class="se">\p</span>ublic&gt;ping github.com
+</span></span><span class="line"><span class="cl">正在 Ping github.com <span class="o">[</span>20.205.243.166<span class="o">]</span> 具有 <span class="m">32</span> 字节的数据:
 </span></span><span class="line"><span class="cl">请求超时。
 </span></span><span class="line"><span class="cl">请求超时。
 </span></span><span class="line"><span class="cl">请求超时。
@@ -210,18 +210,18 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">C:\Users\hugoblog\public&gt;ping github.com
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\h</span>ugoblog<span class="se">\p</span>ublic&gt;ping github.com
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">正在 Ping github.com [140.82.113.4] 具有 32 字节的数据:
+</span></span><span class="line"><span class="cl">正在 Ping github.com <span class="o">[</span>140.82.113.4<span class="o">]</span> 具有 <span class="m">32</span> 字节的数据:
 </span></span><span class="line"><span class="cl">请求超时。
 </span></span><span class="line"><span class="cl">请求超时。
-</span></span><span class="line"><span class="cl">来自 140.82.113.4 的回复: 字节=32 时间=246ms TTL=50
-</span></span><span class="line"><span class="cl">来自 140.82.113.4 的回复: 字节=32 时间=248ms TTL=50
+</span></span><span class="line"><span class="cl">来自 140.82.113.4 的回复: <span class="nv">字节</span><span class="o">=</span><span class="m">32</span> <span class="nv">时间</span><span class="o">=</span>246ms <span class="nv">TTL</span><span class="o">=</span><span class="m">50</span>
+</span></span><span class="line"><span class="cl">来自 140.82.113.4 的回复: <span class="nv">字节</span><span class="o">=</span><span class="m">32</span> <span class="nv">时间</span><span class="o">=</span>248ms <span class="nv">TTL</span><span class="o">=</span><span class="m">50</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">140.82.113.4 的 Ping 统计信息:
-</span></span><span class="line"><span class="cl">    数据包: 已发送 = 4，已接收 = 2，丢失 = 2 (50% 丢失)，
-</span></span><span class="line"><span class="cl">往返行程的估计时间(以毫秒为单位):
-</span></span><span class="line"><span class="cl">    最短 = 246ms，最长 = 248ms，平均 = 247ms</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">    数据包: <span class="nv">已发送</span> <span class="o">=</span> 4，已接收 <span class="o">=</span> 2，丢失 <span class="o">=</span> <span class="m">2</span> <span class="o">(</span>50% 丢失<span class="o">)</span>，
+</span></span><span class="line"><span class="cl">往返行程的估计时间<span class="o">(</span>以毫秒为单位<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">    <span class="nv">最短</span> <span class="o">=</span> 246ms，最长 <span class="o">=</span> 248ms，平均 <span class="o">=</span> 247ms</span></span></code></pre></td></tr></table>
 </div>
 </div><p>成功了，git push 也可以正常运行。</p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
@@ -261,5 +261,5 @@
         </div></div><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;"></div><noscript>
     <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/pace/themes/blue/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":12,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"},"siteTime":"2023-11-20T21:15:22+08:00"};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/pace/themes/orange/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":12,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"},"siteTime":"2023-11-20T21:15:22+08:00"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>
