@@ -63,6 +63,22 @@ n-ARQ中，最佳窗口大小是**$1+2\alpha$**(向上取整)
 
 描述排队模型三个方面：一是顾客到达的行为和规则；二是排队规则，是等待制还是损失制；三是服务规则和服务时间
 
+###  3.2
+
+#### M/M/1
+
+$N = \sum_{n = 0}^{\infty}np_{n} = \sum_{n = 0}^{\infty}n\rho^{n}\left( 1 - \rho \right) = \frac{\rho}{1 - \rho} = \frac{\lambda}{\mu - \lambda}$
+
+#### M/G/1
+
+$W = \frac{\lambda \overline{X^2}}{2 ( 1 - \rho )}$
+
+#### M/D/1
+
+$W = \frac{\rho}{2\mu( 1 - \rho )}$
+
+
+
 ## 第四章
 
 ### 4.1
