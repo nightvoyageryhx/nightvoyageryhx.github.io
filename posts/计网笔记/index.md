@@ -69,9 +69,9 @@ MACA带有冲突避免的多路访问
 
 物理层编码违例法
 
-![image-20240616170426644](../../static/imgs/image-20240616170426644.png)
+![IP数据报](../../static/imgs/v2-73e5887f92e82f68fd54572e340472e1_720w.png)
 
-![image-20240616170329488](../../static/imgs/image-20240616170329488.png)
+![TCP协议头](../../static/imgs/v2-fd6a23525efe79103335a806082aa340_720w.png)
 
 TCP协议头在数据部分
 
