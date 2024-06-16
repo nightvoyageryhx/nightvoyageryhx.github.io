@@ -37,7 +37,7 @@
 
 **ARP**（Address Resolution Protocol，地址解析协议）是用来将IP地址解析为MAC地址的协议。主机或三层网络设备上会维护一张ARP表，用于存储IP地址和MAC地址的映射关系，一般ARP表项包括动态ARP表项和静态ARP表项。
 
-OSI (Open System Interconnection Reference Model**)开放式通信系统互联参考模型
+OSI (Open System Interconnection Reference Model)开放式通信系统互联参考模型
 
 DNS（Domain Name System）域名解析协议、域名系统
 
@@ -55,6 +55,12 @@ MACA带有冲突避免的多路访问
 
 屏蔽双绞线(STP：Shielded Twisted Pair)
 
+**IGMP**(Internet Group Management Protocol，因特网组管理协议)允许Internet中的计算机参加多播，是计算机用做向相邻多目路由器报告多组成员的协议。多目路由器是支持组播的路由器，它向本地网络发送IGMP查询，计算机通过发送IGMP报告来应答查询。多目路由器负责将组播包转发到网络中所有组播成员。
+
+ATM 异步传输模式(Asynchronous Transfer Mode)
+
+无类别域间路由（Classless Inter-Domain Routing、CIDR）
+
 ## 知识点
 
 802.3网络 MAC地址长度为48位（6个字节）
@@ -69,11 +75,17 @@ MACA带有冲突避免的多路访问
 
 物理层编码违例法
 
-![IP数据报](https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b))
+![IP数据报](https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b)
 
 ![TCP协议头](https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b)
 
 TCP协议头在数据部分
+
+ICMP 报文封装在IP数据报中
+
+前导域：10101010，用于接收方和发送方时钟同步。 8个字节
+
+TCP在不可靠的互联网络上，提供一个端 到端的，全双工的，可靠的，面向连接的， 一对一的字节流服务
 
 
 ---
