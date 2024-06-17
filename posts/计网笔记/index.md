@@ -87,6 +87,8 @@ ICMP 报文封装在IP数据报中
 
 TCP在不可靠的互联网络上，提供一个端 到端的，全双工的，可靠的，面向连接的， 一对一的字节流服务
 
+![](https://img-blog.csdnimg.cn/20201028134158932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d3eTAzMjQ=,size_16,color_FFFFFF,t_70#pic_center)
+
 
 ---
 
