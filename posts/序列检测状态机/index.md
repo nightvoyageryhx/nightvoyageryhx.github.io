@@ -80,7 +80,7 @@ E-->A:1/0
 
    ztj.v
 
-```verilog
+```verilog {title="ztj.v"}
 module ztj(D_out,D_in,rst_n,clk);
 // 定义状态编码，每个状态用5位二进制表示
 parameter IDLE=5'b00000;//空闲状态
@@ -155,14 +155,14 @@ endmodule
 
    ztj_tb.v
 
-   ```verilog
+```verilog {title="ztj_tb.v"}
    `timescale 10ns / 1ns
    
    module ztj_tb;
    
    // 参数定义
    reg D_in;  //序列输入          
-   wire D_out;  //状态检测输出    
+   wireztj.v D_out;  //状态检测输出    
    reg rst_n;//复位
    reg clk;//时钟
    integer k,d1;//循环变量与随机数值
@@ -233,7 +233,7 @@ endmodule
    
    endmodule
    
-   ```
+```
 
    
 
