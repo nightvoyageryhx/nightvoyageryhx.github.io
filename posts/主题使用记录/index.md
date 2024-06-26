@@ -35,6 +35,20 @@
 
 {{< music server="netease" type="song" id="65334" >}}
 
+自动识别插入
+
+``` go-html-template {title="auto"}
+{{</* music auto="https://y.music.163.com/m/song?id=5251214" */>}}
+或者
+{{</* music "https://y.music.163.com/m/song?id=5251214" */>}}
+```
+
+效果如下
+
+{{< music "https://y.music.163.com/m/song?id=5251214" >}}
+
+此外支持歌单、专辑、作者等
+
 
 ---
 
