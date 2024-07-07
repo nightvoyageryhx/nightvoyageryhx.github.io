@@ -3,7 +3,15 @@
     <title>所有文章 - 夜航星</title>
     <link>https://nightvoyageryhx.github.io/posts/</link>
     <description>所有文章 | 夜航星</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Wed, 26 Jun 2024 00:12:56 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Sat, 06 Jul 2024 13:56:42 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>无线信号测量及分析</title>
+  <link>https://nightvoyageryhx.github.io/posts/%E6%97%A0%E7%BA%BF%E4%BF%A1%E5%8F%B7%E6%B5%8B%E9%87%8F%E5%8F%8A%E5%88%86%E6%9E%90/</link>
+  <pubDate>Sat, 06 Jul 2024 13:56:42 &#43;0800</pubDate>
+  <author>夜航星</author>
+  <guid>https://nightvoyageryhx.github.io/posts/%E6%97%A0%E7%BA%BF%E4%BF%A1%E5%8F%B7%E6%B5%8B%E9%87%8F%E5%8F%8A%E5%88%86%E6%9E%90/</guid>
+  <description><![CDATA[<div class="featured-image"><img loading="eager" src="https://picx.zhimg.com/80/v2-c9dd84bcb7b8d92c299081d6baba2a66_720w.png" title="西邮生产实习的内容" alt="无线信号测量及分析" referrerpolicy="no-referrer"/></div>西邮生产实习的内容]]></description>
+</item>
+<item>
   <title>主题使用记录</title>
   <link>https://nightvoyageryhx.github.io/posts/%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</link>
   <pubDate>Wed, 26 Jun 2024 00:12:56 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
   <author>夜航星</author>
   <guid>https://nightvoyageryhx.github.io/posts/%E9%A3%9E%E5%88%B0%E6%A2%A6%E6%83%B3%E7%9A%84%E5%A4%A9%E7%A9%BA/</guid>
   <description><![CDATA[<div class="featured-image"><img loading="eager" src="https://pic1.zhimg.com/80/v2-c8403c570d78774cf931cfddcb44f9a7_1440w.jpeg" title="《候鸟》玩后感" alt="飞到梦想的天空" referrerpolicy="no-referrer"/></div>《候鸟》玩后感]]></description>
-</item>
-<item>
-  <title>关于只狼和古剑奇谭三</title>
-  <link>https://nightvoyageryhx.github.io/posts/%E5%85%B3%E4%BA%8E%E5%8F%AA%E7%8B%BC%E5%92%8C%E5%8F%A4%E5%89%91%E5%A5%87%E8%B0%AD%E4%B8%89/</link>
-  <pubDate>Sun, 17 Mar 2024 12:43:25 &#43;0800</pubDate>
-  <author>夜航星</author>
-  <guid>https://nightvoyageryhx.github.io/posts/%E5%85%B3%E4%BA%8E%E5%8F%AA%E7%8B%BC%E5%92%8C%E5%8F%A4%E5%89%91%E5%A5%87%E8%B0%AD%E4%B8%89/</guid>
-  <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>
