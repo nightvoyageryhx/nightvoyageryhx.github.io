@@ -1,11 +1,11 @@
 # ESP32C3频率响应LED阵列
 
 
-<!--more-->
+&lt;!--more--&gt;
 
 # ESP32c3_FFT_LEDmatrix
 
-{{< bilibili BV1hhh9egEjB >}}
+{{&lt; bilibili BV1hhh9egEjB &gt;}}
 
 ## 条件
 
@@ -26,12 +26,12 @@
 将```C:文档\Arduino\libraries\LedControl\src``` 路径（也就是LEDControl库的安装路径）下的```LedControl.h```文件中的
 
 ```
-#include <avr/pgmspace.h>
+#include &lt;avr/pgmspace.h&gt;
 ```
 
 注释掉或者删除（大约在第30行），**否则会报错**
 
-如果不知道路径在哪，把鼠标指针放到代码里```#include <LedControl.h>```这一行IDE就会显示出来
+如果不知道路径在哪，把鼠标指针放到代码里```#include &lt;LedControl.h&gt;```这一行IDE就会显示出来
 
 *****************
 
@@ -50,7 +50,7 @@
 
 
 
-> ESP32c3**不推荐使用GPIO11**，如果要使用需要请先进行解锁 
+&gt; ESP32c3**不推荐使用GPIO11**，如果要使用需要请先进行解锁 
 
 ********
 

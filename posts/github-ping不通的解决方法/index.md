@@ -1,7 +1,7 @@
-# Github ping不通的解决方法
+# Github Ping不通的解决方法
 
 
-<!--more-->
+&lt;!--more--&gt;
 
 今天用 hugo 做博文，在 git push 时遇到了问题
 
@@ -21,7 +21,7 @@ fatal: Could not read from remote repository.
 于是 ping github.com，果然 ping 不通
 
 ```bash
-C:\Users\hugoblog\public>ping github.com
+C:\Users\hugoblog\public&gt;ping github.com
 正在 Ping github.com [20.205.243.166] 具有 32 字节的数据:
 请求超时。
 请求超时。
@@ -43,7 +43,7 @@ C:\Users\hugoblog\public>ping github.com
 
 
 
-> The website holds a global ranking of 47 and is associated with the network IP address 140.82.113.4
+&gt; The website holds a global ranking of 47 and is associated with the network IP address 140.82.113.4
 
 
 
@@ -56,7 +56,7 @@ C:\Users\hugoblog\public>ping github.com
 保存之后，重新 ping github.com
 
 ```bash
-C:\Users\hugoblog\public>ping github.com
+C:\Users\hugoblog\public&gt;ping github.com
 
 正在 Ping github.com [140.82.113.4] 具有 32 字节的数据:
 请求超时。

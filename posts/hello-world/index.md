@@ -1,7 +1,7 @@
 # Hello World
 
 
-<!--more-->
+&lt;!--more--&gt;
 
 首次部署到GitHub Page
 

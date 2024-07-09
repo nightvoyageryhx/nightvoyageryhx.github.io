@@ -1,7 +1,7 @@
 # 序列检测状态机
 
 
-<!--more-->
+&lt;!--more--&gt;
 
 ## **序列检测器：**
 
@@ -59,18 +59,18 @@
 
 ```mermaid
 stateDiagram
-IDLE-->IDLE:0/0
-IDLE-->A:1/0
-A-->B:0/0
-A-->A:1/0
-B-->A:1/0
-B-->C:0/0
-C-->IDLE:0/0
-C-->D:1/0
-D-->B:0/0
-D-->E:1/1
-E-->B:0/0
-E-->A:1/0
+IDLE--&gt;IDLE:0/0
+IDLE--&gt;A:1/0
+A--&gt;B:0/0
+A--&gt;A:1/0
+B--&gt;A:1/0
+B--&gt;C:0/0
+C--&gt;IDLE:0/0
+C--&gt;D:1/0
+D--&gt;B:0/0
+D--&gt;E:1/1
+E--&gt;B:0/0
+E--&gt;A:1/0
 
 
 
@@ -80,15 +80,15 @@ E-->A:1/0
 
    ztj.v
 
-```verilog {title="ztj.v"}
+```verilog {title=&#34;ztj.v&#34;}
 module ztj(D_out,D_in,rst_n,clk);
 // 定义状态编码，每个状态用5位二进制表示
-parameter IDLE=5'b00000;//空闲状态
-parameter A=5'b00001;//A
-parameter B=5'b00010;//B
-parameter C=5'b00100;//C
-parameter D=5'b01000;//D
-parameter E=5'b10000;//E
+parameter IDLE=5&#39;b00000;//空闲状态
+parameter A=5&#39;b00001;//A
+parameter B=5&#39;b00010;//B
+parameter C=5&#39;b00100;//C
+parameter D=5&#39;b01000;//D
+parameter E=5&#39;b10000;//E
 
 // 定义输入输出端口
 input D_in; // 数据输入
@@ -105,9 +105,9 @@ always @(posedge clk or negedge rst_n)
 
 begin
     if (!rst_n) 
-        current_state <= IDLE;
+        current_state &lt;= IDLE;
     else 
-        current_state <= next_state;
+        current_state &lt;= next_state;
 end
 
 //根据当前状态和输入判断将要跳转的状态
@@ -116,35 +116,35 @@ always @(current_state or D_in)
         case (current_state)//通过状态转移图编写
            IDLE: 
                 if(D_in==0)
-                    next_state<=IDLE;
+                    next_state&lt;=IDLE;
                 else
-                    next_state<=A;//1
+                    next_state&lt;=A;//1
             A:
                 if(D_in==0)
-                    next_state<=B;//0
+                    next_state&lt;=B;//0
                 else
-                    next_state<=A;
+                    next_state&lt;=A;
             B:
                 if(D_in==0)
-                    next_state<=C;//0
+                    next_state&lt;=C;//0
                 else
-                    next_state<=A;  
+                    next_state&lt;=A;  
             C:
                 if(D_in==0)
-                    next_state<=IDLE;
+                    next_state&lt;=IDLE;
                 else
-                    next_state<=D;//1
+                    next_state&lt;=D;//1
             D:
                 if(D_in==0)
-                    next_state<=B;
+                    next_state&lt;=B;
                 else
-                    next_state<=E;//1；检测到10011
+                    next_state&lt;=E;//1；检测到10011
             E:   
                 if(D_in==0)
-                    next_state<=B;
+                    next_state&lt;=B;
                 else
-                    next_state<=A;
-            default: next_state<=IDLE;//缺省
+                    next_state&lt;=A;
+            default: next_state&lt;=IDLE;//缺省
         endcase
     end
 
@@ -155,7 +155,7 @@ endmodule
 
    ztj_tb.v
 
-```verilog {title="ztj_tb.v"}
+```verilog {title=&#34;ztj_tb.v&#34;}
    `timescale 10ns / 1ns
    
    module ztj_tb;
@@ -181,52 +181,52 @@ endmodule
    
    initial begin//设置输入序列值
        #20;
-       rst_n=1'b0;
+       rst_n=1&#39;b0;
         #15;
-        rst_n=1'b1;//复位键
+        rst_n=1&#39;b1;//复位键
         #10;
-        for(k=0;k<=1000;k=k+1)//循环多次
+        for(k=0;k&lt;=1000;k=k&#43;1)//循环多次
         begin
         d1={$random}%2;//每一个周期0 1变
-        D_in<=d1;
+        D_in&lt;=d1;
         #10;
         end
         
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b1;
+        D_in=1&#39;b1;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
-        D_in=1'b0;
+        D_in=1&#39;b0;
         #10;
                // 结束仿真。
    end

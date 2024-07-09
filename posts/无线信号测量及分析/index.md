@@ -1,15 +1,15 @@
 # 无线信号测量及分析
 
 
-<!--more-->
+&lt;!--more--&gt;
 
 - 模3冲突
 
-![](https://picx.zhimg.com/80/v2-fe3ce1da96a3575e65624ea420938050_720w.png)
+![](https://picx.zhimg.com/80/v2-fe3ce1da96a3575e65624ea420938050_720w.png &#34;&#34;)
 
 PCI全称Physical Cell Identifier，即物理小区标识，LTE中终端以此区分不同小区的无线信号。从物理层来看，PCI是由主同步信号（PSS）与辅同步信号（SSS）组成，可以通过简单运算获得
 $$
-PCI=PSS+{3}\times{SSS}
+PCI=PSS&#43;{3}\times{SSS}
 $$
 模3干扰，其实就是两个小区的PCI值除3 余数相同，也就是PSS冲突，且方向对打，产生的干扰，例A小区PCI为9，除3余数为0，B小区PCI为21除3最后余数为0，且A跟B小区方向对打，就产生了模3干扰，一般处理方法可以是合理的调下其中一个小区的PCI位置，避开余数相同的小区对打。
 
@@ -19,11 +19,17 @@ $$
 
   1.弱覆盖
 
-![](https://picx.zhimg.com/80/v2-9291c349fa0b848b5192dea71fc33c19_720w.png)
+
+![测量数据](https://picx.zhimg.com/80/v2-9291c349fa0b848b5192dea71fc33c19_720w.png)
+
 
   2.假弱覆盖
 
+
+
 ![](https://picx.zhimg.com/80/v2-06988d0fe24dd7585785f2d2bfb8faab_720w.png)
+
+
 
 在很近的位置由高强度和低强度的小区，调整接入小区规则和邻区来改善质量。
 
@@ -125,13 +131,13 @@ $$
 
 四、数据分析与对比
 
-[EARFCN](https://www.baidu.com/s?wd=EARFCN&rsv_idx=2&tn=15007414_12_dg&usm=1&ie=utf-8&rsv_pq=e99ab96404059eaf&oq=earfcn在通信中叫什么&rsv_t=0f28PfXBXrNPtxr5itI2l3sNRNC3TmbnaM3BIMJbRv6opFOLy7258JbEcKmfwJGCDPR8hiU&sa=re_dqa_zy&icon=1)在通信中称为E-UTRA Absolute Radio Frequency Channel Number。
+[EARFCN](https://www.baidu.com/s?wd=EARFCN&amp;rsv_idx=2&amp;tn=15007414_12_dg&amp;usm=1&amp;ie=utf-8&amp;rsv_pq=e99ab96404059eaf&amp;oq=earfcn在通信中叫什么&amp;rsv_t=0f28PfXBXrNPtxr5itI2l3sNRNC3TmbnaM3BIMJbRv6opFOLy7258JbEcKmfwJGCDPR8hiU&amp;sa=re_dqa_zy&amp;icon=1)在通信中称为E-UTRA Absolute Radio Frequency Channel Number。
 
 **EARFCN**是LTE系统中用来表示频段的参数，它是一个无单位的数字，用于标识TE系统中的每个频段。频段是指无线通信中分配给各种无线技术使用的一段特定的频率范围。**RSRP**（Reference Signal Received Power）：参考信号接收功率，是衡量UE（用户设备）在某一服务小区内接收到的下行参考信号的功率大小。RSRP主要反映了UE与基站之间的无线信号强度，是评估无线链路质量的重要参数。
 
 **RSRQ**（Reference Signal Received Quality）：参考信号接收质量，是UE测量到的参考信号的质量。RSRQ是通过比较接收到的参考信号功率与总干扰加噪声功率来计算的，因此它可以更全面地反映UE在特定小区内的信号质量。
 
-[RSSI](https://www.baidu.com/s?wd=RSSI&rsv_idx=2&tn=15007414_12_dg&usm=3&ie=utf-8&rsv_pq=9f9d8aea04028792&oq=rssi是什么意思&rsv_t=6f1booC7R0QArUfGKBxlPXuxUHPUJlMpheaTguK9I5R5sruUsWMZFSWNklUKX8NQ7rVU1yg&sa=re_dqa_zy&icon=1)是"Received Signal Strength Indication"的缩写，即接收的信号强度指示。它是一个用于衡量设备从基站或其他发射点接收到的信号强度的测量单位，通常以[dBm](https://www.baidu.com/s?wd=dBm&rsv_idx=2&tn=15007414_12_dg&usm=3&ie=utf-8&rsv_pq=9f9d8aea04028792&oq=rssi是什么意思&rsv_t=3fbfii3EVvs1t0u8C7dzJq1NZN9nyU6dNmDx/UBuDdMjRALKcGZecYjWVpWRP21l1+ptctQ&sa=re_dqa_zy&icon=1)（分贝毫瓦）表示。RSSI的值越大，表示设备接收到的信号越强。RSSI不仅用于判断链接质量，还是决定是否增大广播发送强度的一个依据。RSSI的测量值一般不包括天线增益或传输系统的损耗，它是一种定位技术，通过接收到的信号强弱测定信号点与接收点的距离，进而根据相应数据进行定位计算。
+[RSSI](https://www.baidu.com/s?wd=RSSI&amp;rsv_idx=2&amp;tn=15007414_12_dg&amp;usm=3&amp;ie=utf-8&amp;rsv_pq=9f9d8aea04028792&amp;oq=rssi是什么意思&amp;rsv_t=6f1booC7R0QArUfGKBxlPXuxUHPUJlMpheaTguK9I5R5sruUsWMZFSWNklUKX8NQ7rVU1yg&amp;sa=re_dqa_zy&amp;icon=1)是&#34;Received Signal Strength Indication&#34;的缩写，即接收的信号强度指示。它是一个用于衡量设备从基站或其他发射点接收到的信号强度的测量单位，通常以[dBm](https://www.baidu.com/s?wd=dBm&amp;rsv_idx=2&amp;tn=15007414_12_dg&amp;usm=3&amp;ie=utf-8&amp;rsv_pq=9f9d8aea04028792&amp;oq=rssi是什么意思&amp;rsv_t=3fbfii3EVvs1t0u8C7dzJq1NZN9nyU6dNmDx/UBuDdMjRALKcGZecYjWVpWRP21l1&#43;ptctQ&amp;sa=re_dqa_zy&amp;icon=1)（分贝毫瓦）表示。RSSI的值越大，表示设备接收到的信号越强。RSSI不仅用于判断链接质量，还是决定是否增大广播发送强度的一个依据。RSSI的测量值一般不包括天线增益或传输系统的损耗，它是一种定位技术，通过接收到的信号强弱测定信号点与接收点的距离，进而根据相应数据进行定位计算。
 
 ![西邮部分道路实测信号强度](https://picx.zhimg.com/80/v2-c9dd84bcb7b8d92c299081d6baba2a66_720w.png)
 
@@ -143,7 +149,7 @@ $$
 
 ![](https://pic1.zhimg.com/80/v2-7bc5a5056087260dbcd316d8ebc86529_720w.gif)
 
-西操场信号强度在>-105dBm区域，2019和2024年没有区别 
+西操场信号强度在&gt;-105dBm区域，2019和2024年没有区别 
 
 2、湖边崇德路
 
