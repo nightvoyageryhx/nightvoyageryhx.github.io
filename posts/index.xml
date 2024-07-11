@@ -3,7 +3,15 @@
     <title>所有文章 - 夜航星</title>
     <link>https://nightvoyageryhx.github.io/posts/</link>
     <description>所有文章 | 夜航星</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Mon, 08 Jul 2024 00:27:09 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>夜航星</copyright><lastBuildDate>Thu, 11 Jul 2024 18:46:13 &#43;0800</lastBuildDate><atom:link href="https://nightvoyageryhx.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>Batch脚本编写</title>
+  <link>https://nightvoyageryhx.github.io/posts/6db4cf1/</link>
+  <pubDate>Thu, 11 Jul 2024 18:46:13 &#43;0800</pubDate>
+  <author>夜航星</author>
+  <guid>https://nightvoyageryhx.github.io/posts/6db4cf1/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>ESP32C3频率响应LED阵列</title>
   <link>https://nightvoyageryhx.github.io/posts/esp32c3%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94led%E9%98%B5%E5%88%97/</link>
   <pubDate>Mon, 08 Jul 2024 00:27:09 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
   <author>夜航星</author>
   <guid>https://nightvoyageryhx.github.io/posts/%E7%94%9F%E6%B4%BB%E4%B8%AD%E5%A6%82%E4%BD%95%E5%8A%A0%E5%BC%BA%E5%85%9A%E5%91%98%E8%BA%AB%E4%BB%BD%E8%AE%A4%E7%9F%A5/</guid>
   <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>飞到梦想的天空</title>
-  <link>https://nightvoyageryhx.github.io/posts/%E9%A3%9E%E5%88%B0%E6%A2%A6%E6%83%B3%E7%9A%84%E5%A4%A9%E7%A9%BA/</link>
-  <pubDate>Sun, 24 Mar 2024 22:39:08 &#43;0800</pubDate>
-  <author>夜航星</author>
-  <guid>https://nightvoyageryhx.github.io/posts/%E9%A3%9E%E5%88%B0%E6%A2%A6%E6%83%B3%E7%9A%84%E5%A4%A9%E7%A9%BA/</guid>
-  <description><![CDATA[<div class="featured-image"><img loading="eager" src="https://pic1.zhimg.com/80/v2-c8403c570d78774cf931cfddcb44f9a7_1440w.jpeg" alt="飞到梦想的天空" title="《候鸟》玩后感" referrerpolicy="no-referrer"/></div>《候鸟》玩后感]]></description>
 </item>
 </channel>
 </rss>
