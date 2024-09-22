@@ -104,5 +104,5 @@ pop3、IMAP、SNMP
 ---
 
 > 作者: 夜航星  
-> URL: https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/  
+> URL: http://localhost:7017/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/  
 

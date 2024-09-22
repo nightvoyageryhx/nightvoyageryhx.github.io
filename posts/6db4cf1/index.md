@@ -75,5 +75,5 @@ hugo server
 ---
 
 > 作者: 夜航星  
-> URL: https://nightvoyageryhx.github.io/posts/6db4cf1/  
+> URL: http://localhost:7017/posts/6db4cf1/  
 
