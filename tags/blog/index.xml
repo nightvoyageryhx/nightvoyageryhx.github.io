@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog - 标签 - 夜航星</title>
-    <link>http://localhost:7017/tags/blog/</link>
+    <link>http://localhost:1313/tags/blog/</link>
     <description>夜航星的博客</description>
     <generator>Hugo 0.134.3 &amp; FixIt v0.3.11</generator>
     <language>zh-CN</language>
     <copyright>夜航星</copyright>
     <lastBuildDate>Mon, 22 Jan 2024 11:58:54 +0800</lastBuildDate>
-    <atom:link href="http://localhost:7017/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Github ping不通的解决方法</title>
-      <link>http://localhost:7017/posts/github-ping%E4%B8%8D%E9%80%9A%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <link>http://localhost:1313/posts/github-ping%E4%B8%8D%E9%80%9A%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
       <pubDate>Mon, 22 Jan 2024 11:58:54 +0800</pubDate>
-      <guid>http://localhost:7017/posts/github-ping%E4%B8%8D%E9%80%9A%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
-      <category domain="http://localhost:7017/categories/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">问题记录</category>
+      <guid>http://localhost:1313/posts/github-ping%E4%B8%8D%E9%80%9A%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <category domain="http://localhost:1313/categories/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">问题记录</category>
       <description>Github ping不通的解决方法</description>
     </item>
   </channel>
