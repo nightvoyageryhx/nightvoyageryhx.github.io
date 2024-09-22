@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>高等数学 - 标签 - 夜航星</title>
+    <link>https://nightvoyageryhx.github.io/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</link>
+    <description>夜航星的博客</description>
+    <generator>Hugo 0.134.3 &amp; FixIt v0.3.11</generator>
+    <language>zh-CN</language>
+    <copyright>夜航星</copyright>
+    <lastBuildDate>Wed, 04 Sep 2024 23:11:44 +0800</lastBuildDate>
+    <atom:link href="https://nightvoyageryhx.github.io/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常用数学公式</title>
+      <link>https://nightvoyageryhx.github.io/posts/b2c5904/</link>
+      <pubDate>Wed, 04 Sep 2024 23:11:44 +0800</pubDate>
+      <guid>https://nightvoyageryhx.github.io/posts/b2c5904/</guid>
+      <category domain="https://nightvoyageryhx.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</category>
+      <description>常用数学公式</description>
+    </item>
+  </channel>
+</rss>

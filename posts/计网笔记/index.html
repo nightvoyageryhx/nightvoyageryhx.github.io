@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>计网笔记 - 夜航星</title><meta name="author" content="夜航星">
+<meta name="description" content="夜航星的博客"><meta name="keywords" content='网络'>
+  <meta itemprop="name" content="计网笔记">
+  <meta itemprop="description" content="夜航星的博客">
+  <meta itemprop="datePublished" content="2024-06-15T10:27:06+08:00">
+  <meta itemprop="dateModified" content="2024-06-17T23:55:45+08:00">
+  <meta itemprop="wordCount" content="1469">
+  <meta itemprop="keywords" content="网络"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/">
+  <meta property="og:site_name" content="夜航星">
+  <meta property="og:title" content="计网笔记">
+  <meta property="og:description" content="夜航星的博客">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-15T10:27:06+08:00">
+    <meta property="article:modified_time" content="2024-06-17T23:55:45+08:00">
+    <meta property="article:tag" content="网络">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="计网笔记">
+  <meta name="twitter:description" content="夜航星的博客">
+<meta name="application-name" content="Nightvoyager">
+<meta name="apple-mobile-web-app-title" content="Nightvoyager"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" title="计网笔记 - 夜航星" /><link rel="prev" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" title="序列检测状态机" /><link rel="next" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E6%9D%82%E8%B0%88%E9%87%8C%E7%9A%84%E6%9D%82%E8%B0%88/" title="杂谈里的杂谈" /><link rel="alternate" type="text/markdown" href="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/index.md" title="计网笔记 - 夜航星"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "计网笔记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0\/"
+    },"genre": "posts","keywords": "网络","wordcount":  1469 ,
+    "url": "https:\/\/nightvoyageryhx.github.io\/posts\/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0\/","datePublished": "2024-06-15T10:27:06+08:00","dateModified": "2024-06-17T23:55:45+08:00","license": "夜航星","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "夜航星"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                >分类</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>计网笔记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-15 10:27:06"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-15">2024-06-15</time></span>&nbsp;<span title="更新于 2024-06-17 23:55:45"><i class="fa-regular fa-calendar-check fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-17">2024-06-17</time></span>&nbsp;<span title="1469 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念">概念</a></li>
+    <li><a href="#知识点">知识点</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="概念" class="heading-element"><span>概念</span>
+  <a href="#%e6%a6%82%e5%bf%b5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><strong>ITU</strong>（International Telecommunication Union， 国际电信联盟</p>
+<p><strong>ISO</strong>（International Standards Organization，国 际标准化组织）</p>
+<p><strong>IEEE</strong>（Institute of Electrical and Electronics  Engineers，电气和电子工程师协会）</p>
+<p><strong>PPP</strong> （Point-to-Point Protocol） 端到端协议</p>
+<p><strong>SAP</strong>（stable abstraction principle  ）稳定抽象原则</p>
+<p><strong>ICMP</strong>（Internet Control Message Protocol）Internet控制 报文 协议</p>
+<p>传输控制协议（<strong>TCP</strong>，Transmission Control Protocol）</p>
+<p><strong>UDP</strong> User Datagram Protocol 用户数据报协议</p>
+<p>开放式最短路径优先<strong>OSPF</strong>（Open Shortest Path First）</p>
+<p>动态主机配置协议<strong>DHCP</strong>（Dynamic Host Configuration Protocol）</p>
+<p>路由信息协议<strong>RIP</strong>（Routing Information Protocol）基于距离矢量算法的路由协议，利用跳数来作为计量标准</p>
+<p><strong>实时传输协议</strong>（<strong>Real-time Transport Protocol</strong>或简写<strong>RTP</strong>）是一个<a href="https://baike.baidu.com/item/%e7%bd%91%e7%bb%9c%e4%bc%a0%e8%be%93%e5%8d%8f%e8%ae%ae/0?fromModule=lemma_inlink"target="_blank" rel="external nofollow noopener noreferrer">网络传输协议</a>，它是由IETF的多媒体传输工作小组1996年在RFC 1889中公布的。</p>
+<p>实时传输控制协议(<strong>R</strong>eal-<strong>t</strong>ime  transport <strong>C</strong>ontrol <strong>P</strong>rotocol，RTCP)</p>
+<p><strong>NAT</strong>（Network Address Translation），是指网络地址转换，1994年提出的。NAT是用于在本地网络中使用私有地址，在连接互联网时转而使用全局 IP 地址的技术。</p>
+<p><strong>TSAP</strong> Transport Service Access Point 传输服务访问点</p>
+<p><strong>ARP</strong>（Address Resolution Protocol，地址解析协议）是用来将IP地址解析为MAC地址的协议。主机或三层网络设备上会维护一张ARP表，用于存储IP地址和MAC地址的映射关系，一般ARP表项包括动态ARP表项和静态ARP表项。</p>
+<p>OSI (Open System Interconnection Reference Model)开放式通信系统互联参考模型</p>
+<p>DNS（Domain Name System）域名解析协议、域名系统</p>
+<p>国际互联网工程任务组（The Internet Engineering Task Force，简称 IETF）</p>
+<p><strong>征求意见稿</strong>（英语：Request For Comments，缩写为RFC）</p>
+<p>PSTN 公共交换电话网络</p>
+<p>非对称<a href="https://baike.baidu.com/item/%e6%95%b0%e5%ad%97%e7%94%a8%e6%88%b7%e7%ba%bf%e8%b7%af/18758554?fromModule=lemma_inlink"target="_blank" rel="external nofollow noopener noreferrer">数字用户线路</a>（ADSL，Asymmetric Digital Subscriber Line）</p>
+<p>MACA带有冲突避免的多路访问</p>
+<p>非屏蔽双绞线(UTP：Unshielded Twisted Pair)</p>
+<p>屏蔽双绞线(STP：Shielded Twisted Pair)</p>
+<p><strong>IGMP</strong>(Internet Group Management Protocol，因特网组管理协议)允许Internet中的计算机参加多播，是计算机用做向相邻多目路由器报告多组成员的协议。多目路由器是支持组播的路由器，它向本地网络发送IGMP查询，计算机通过发送IGMP报告来应答查询。多目路由器负责将组播包转发到网络中所有组播成员。</p>
+<p>ATM 异步传输模式(Asynchronous Transfer Mode)</p>
+<p>无类别域间路由（Classless Inter-Domain Routing、CIDR）</p>
+<h2 id="知识点" class="heading-element"><span>知识点</span>
+  <a href="#%e7%9f%a5%e8%af%86%e7%82%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>802.3网络 MAC地址长度为48位（6个字节）</p>
+<p><strong>成帧方法</strong> ：</p>
+<p>字符计数法</p>
+<p>含字节填充的分界符法</p>
+<p>含位填充的分界标志法</p>
+<p>物理层编码违例法</p>
+<p><a class="lightgallery" href="https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b&amp;size=large" data-thumbnail="https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b&amp;size=small" data-sub-html="<h2>IP数据报</h2>"><img loading="lazy" src="https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b" alt="IP数据报" srcset="https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b&amp;size=small, https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b&amp;size=medium 1.5x, https://picx.zhimg.com/80/v2-73e5887f92e82f68fd54572e340472e1_720w.png?source=d16d100b&amp;size=large 2x" data-title="IP数据报" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></a></p>
+<p><a class="lightgallery" href="https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b&amp;size=large" data-thumbnail="https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b&amp;size=small" data-sub-html="<h2>TCP协议头</h2>"><img loading="lazy" src="https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b" alt="TCP协议头" srcset="https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b&amp;size=small, https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b&amp;size=medium 1.5x, https://pic1.zhimg.com/80/v2-fd6a23525efe79103335a806082aa340_720w.png?source=d16d100b&amp;size=large 2x" data-title="TCP协议头" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></a></p>
+<p>TCP协议头在数据部分</p>
+<p>ICMP 报文封装在IP数据报中</p>
+<p>前导域：10101010，用于接收方和发送方时钟同步。 8个字节</p>
+<p>TCP在不可靠的互联网络上，提供一个端 到端的，全双工的，可靠的，面向连接的， 一对一的字节流服务</p>
+<hr>
+<p>24年9月21日重启</p>
+<p><strong>邮箱</strong></p>
+<p>pop3、IMAP、SNMP</p>
+<p><a href="https://blog.csdn.net/Tomcat_king/article/details/117806384"target="_blank" rel="external nofollow noopener noreferrer">POP3、SMTP和IMAP之间的区别和联系_smpt pop3 imap-CSDN博客</a></p>
+<p>简单网络管理协议（<strong>SNMP</strong>）是TCP/IP协议簇的一个应用层协议。在1988年被制定，并被Internet体系结构委员会（IAB）采纳作为一个短期的网络管理解决方案；由于SNMP的简单性，在Internet时代得到了蓬勃的发展，1992年发布了SNMPv2版本，以增强SNMPv1的安全性和功能。现在，已经有了SNMPv3版本。</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-06-17 23:55:45">更新于 2024-06-17&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" data-title="计网笔记" data-hashtags="网络"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" data-hashtag="网络"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" data-title="计网笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E7%BD%91%E7%BB%9C/" class="post-tag" title="标签 - 网络">网络</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" class="post-nav-item" rel="prev" title="序列检测状态机"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>序列检测状态机</a>
+      <a href="/posts/%E6%9D%82%E8%B0%88%E9%87%8C%E7%9A%84%E6%9D%82%E8%B0%88/" class="post-nav-item" rel="next" title="杂谈里的杂谈">杂谈里的杂谈<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered order-3">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.134.3"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.11"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-2" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">夜航星</a></span></div><div class="footer-line statistics order-1"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">已经运行</span><span class="run-times ms-1">网站运行中……</span></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/pace/themes/orange/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":12,"noResultsFound":"没有找到结果","snippetLength":30},"siteTime":"2023-11-20T21:15:22+08:00","version":"v0.3.11"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

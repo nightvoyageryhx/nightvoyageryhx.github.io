@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>序列检测状态机 - 夜航星</title><meta name="author" content="夜航星">
+<meta name="description" content="夜航星的博客"><meta name="keywords" content='verilog'>
+  <meta itemprop="name" content="序列检测状态机">
+  <meta itemprop="description" content="夜航星的博客">
+  <meta itemprop="datePublished" content="2024-06-09T22:23:20+08:00">
+  <meta itemprop="dateModified" content="2024-06-09T22:23:20+08:00">
+  <meta itemprop="wordCount" content="1323">
+  <meta itemprop="keywords" content="Verilog"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/">
+  <meta property="og:site_name" content="夜航星">
+  <meta property="og:title" content="序列检测状态机">
+  <meta property="og:description" content="夜航星的博客">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-09T22:23:20+08:00">
+    <meta property="article:modified_time" content="2024-06-09T22:23:20+08:00">
+    <meta property="article:tag" content="Verilog">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="序列检测状态机">
+  <meta name="twitter:description" content="夜航星的博客">
+<meta name="application-name" content="Nightvoyager">
+<meta name="apple-mobile-web-app-title" content="Nightvoyager"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" title="序列检测状态机 - 夜航星" /><link rel="prev" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E4%BB%8E%E5%BB%89%E6%B4%81%E6%96%87%E5%8C%96%E7%9A%84%E4%BC%A0%E6%89%BF%E7%9C%8B%E5%BE%85%E5%BB%89%E6%B4%81%E6%96%B0%E9%A3%8E%E5%B0%9A/" title="从廉洁文化的传承看待廉洁新风尚" /><link rel="next" type="text/html" href="https://nightvoyageryhx.github.io/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" title="计网笔记" /><link rel="alternate" type="text/markdown" href="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/index.md" title="序列检测状态机 - 夜航星"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "序列检测状态机",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA\/"
+    },"genre": "posts","keywords": "verilog","wordcount":  1323 ,
+    "url": "https:\/\/nightvoyageryhx.github.io\/posts\/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA\/","datePublished": "2024-06-09T22:23:20+08:00","dateModified": "2024-06-09T22:23:20+08:00","license": "夜航星","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "夜航星"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                >分类</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>序列检测状态机</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-09 22:23:20"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-09">2024-06-09</time></span>&nbsp;<span title="1323 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#序列检测器"><strong>序列检测器</strong></a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="序列检测器" class="heading-element"><span><strong>序列检测器</strong></span>
+  <a href="#%e5%ba%8f%e5%88%97%e6%a3%80%e6%b5%8b%e5%99%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>序列检测器是一种数字电路，用于检测输入序列中是否出现预定义的特定序列。三段式序列检测器是一种常用的实现方式，它将检测过程分为三个阶段：复位状态、中间状态和检测状态。</p>
+<ol>
+<li>复位状态:</li>
+</ol>
+<p>这是电路的初始状态，表示还没有检测到任何目标序列的一部分。</p>
+<p>在此状态下，电路会忽略所有输入，直到接收到目标序列的第一个比特。</p>
+<p>通常使用一个复位信号来初始化电路到复位状态。</p>
+<ol start="2">
+<li>中间状态:</li>
+</ol>
+<p>当电路接收到目标序列中的部分比特时，它会进入一个或多个中间状态。</p>
+<p>中间状态的数量取决于目标序列的长度和复杂性。</p>
+<p>每个中间状态都表示已经检测到目标序列的一部分，并等待接收后续比特。</p>
+<p>电路根据当前状态和输入比特，跳转到下一个状态或返回复位状态。</p>
+<ol start="3">
+<li>检测状态:</li>
+</ol>
+<p>当电路接收到完整的目标序列时，它会进入检测状态。</p>
+<p>在此状态下，电路会输出一个信号，表示已经成功检测到目标序列。</p>
+<p>然后，电路可以根据设计选择返回复位状态或继续检测下一个目标序列。</p>
+<p>三段式序列检测器可以使用多种逻辑电路来实现，如状态机:</p>
+<p>使用状态转移图和状态表来描述电路的行为，并使用触发器和组合逻辑电路来实现状态转换和输出逻辑</p>
+<ol start="4">
+<li>状态转移列表</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">输入</th>
+          <th style="text-align: center">当前状态</th>
+          <th style="text-align: center">下一个状态</th>
+          <th style="text-align: center">输出</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">IDLE</td>
+          <td style="text-align: center">IDLE</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">IDLE</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">C</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">C</td>
+          <td style="text-align: center">IDLE</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">C</td>
+          <td style="text-align: center">D</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">D</td>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">D</td>
+          <td style="text-align: center">E</td>
+          <td style="text-align: center">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">E</td>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">E</td>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<ol start="5">
+<li>状态转移图</li>
+</ol>
+<pre class="mermaid">stateDiagram
+IDLE-->IDLE:0/0
+IDLE-->A:1/0
+A-->B:0/0
+A-->A:1/0
+B-->A:1/0
+B-->C:0/0
+C-->IDLE:0/0
+C-->D:1/0
+D-->B:0/0
+D-->E:1/1
+E-->B:0/0
+E-->A:1/0</pre>
+<template>stateDiagram
+IDLE-->IDLE:0/0
+IDLE-->A:1/0
+A-->B:0/0
+A-->A:1/0
+B-->A:1/0
+B-->C:0/0
+C-->IDLE:0/0
+C-->D:1/0
+D-->B:0/0
+D-->E:1/1
+E-->B:0/0
+E-->A:1/0</template><ol start="6">
+<li>
+<p>verilog代码</p>
+<p>ztj.v</p>
+</li>
+</ol>
+<div class="highlight" title="ztj.v"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-verilog" data-lang="verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">ztj</span><span class="p">(</span><span class="n">D_out</span><span class="p">,</span><span class="n">D_in</span><span class="p">,</span><span class="n">rst_n</span><span class="p">,</span><span class="n">clk</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义状态编码，每个状态用5位二进制表示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">IDLE</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b00000</span><span class="p">;</span><span class="c1">//空闲状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">A</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b00001</span><span class="p">;</span><span class="c1">//A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">B</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b00010</span><span class="p">;</span><span class="c1">//B
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">C</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b00100</span><span class="p">;</span><span class="c1">//C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">D</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b01000</span><span class="p">;</span><span class="c1">//D
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">E</span><span class="o">=</span><span class="mh">5</span><span class="mb">&#39;b10000</span><span class="p">;</span><span class="c1">//E
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义输入输出端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">input</span> <span class="n">D_in</span><span class="p">;</span> <span class="c1">// 数据输入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">input</span> <span class="n">clk</span><span class="p">;</span><span class="c1">//时钟
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">input</span> <span class="n">rst_n</span><span class="p">;</span><span class="c1">//复位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">output</span> <span class="kt">wire</span> <span class="n">D_out</span><span class="p">;</span><span class="c1">//检测输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">current_state</span><span class="p">,</span><span class="n">next_state</span><span class="p">;</span><span class="c1">//设置当前状态和下个状态变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span> <span class="n">D_out</span><span class="o">=</span><span class="p">(</span><span class="n">current_state</span><span class="o">==</span><span class="n">E</span><span class="p">)</span><span class="o">?</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">;</span><span class="c1">//判断当前状态是否状态E，是则置输出为1，否则0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//状态转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">always</span> <span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">rst_n</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">current_state</span> <span class="o">&lt;=</span> <span class="n">IDLE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">current_state</span> <span class="o">&lt;=</span> <span class="n">next_state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//根据当前状态和输入判断将要跳转的状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">always</span> <span class="p">@(</span><span class="n">current_state</span> <span class="k">or</span> <span class="n">D_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="p">(</span><span class="n">current_state</span><span class="p">)</span><span class="c1">//通过状态转移图编写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>           <span class="nl">IDLE:</span> 
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">IDLE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span><span class="c1">//1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nl">A:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">B</span><span class="p">;</span><span class="c1">//0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">B:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">C</span><span class="p">;</span><span class="c1">//0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">            <span class="nl">C:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">IDLE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">D</span><span class="p">;</span><span class="c1">//1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nl">D:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">E</span><span class="p">;</span><span class="c1">//1；检测到10011
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nl">E:</span>   
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">D_in</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span> <span class="n">next_state</span><span class="o">&lt;=</span><span class="n">IDLE</span><span class="p">;</span><span class="c1">//缺省
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>
+<p>testbench</p>
+<p>ztj_tb.v</p>
+</li>
+</ol>
+<div class="highlight" title="ztj_tb.v"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-verilog" data-lang="verilog"><span class="line"><span class="cl">   <span class="no">`timescale</span> <span class="mh">10</span><span class="n">ns</span> <span class="o">/</span> <span class="mh">1</span><span class="n">ns</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="k">module</span> <span class="n">ztj_tb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="c1">// 参数定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">reg</span> <span class="n">D_in</span><span class="p">;</span>  <span class="c1">//序列输入          
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="n">wireztj</span><span class="p">.</span><span class="n">v</span> <span class="n">D_out</span><span class="p">;</span>  <span class="c1">//状态检测输出    
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">reg</span> <span class="n">rst_n</span><span class="p">;</span><span class="c1">//复位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">reg</span> <span class="n">clk</span><span class="p">;</span><span class="c1">//时钟
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">integer</span> <span class="n">k</span><span class="p">,</span><span class="n">d1</span><span class="p">;</span><span class="c1">//循环变量与随机数值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   
+</span></span><span class="line"><span class="cl">   <span class="n">ztj</span> <span class="n">ztj</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">       <span class="p">.</span><span class="n">D_in</span><span class="p">(</span><span class="n">D_in</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">       <span class="p">.</span><span class="n">D_out</span><span class="p">(</span><span class="n">D_out</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">       <span class="p">.</span><span class="n">rst_n</span><span class="p">(</span><span class="n">rst_n</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">       <span class="p">.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">);</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="k">initial</span> <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">       <span class="n">clk</span> <span class="o">=</span> <span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="k">forever</span> <span class="p">#</span><span class="mh">5</span> <span class="n">clk</span> <span class="o">=</span> <span class="o">~</span><span class="n">clk</span><span class="p">;</span><span class="c1">//时钟配置T=10ns
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">end</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="k">initial</span> <span class="k">begin</span><span class="c1">//设置输入序列值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>       <span class="p">#</span><span class="mh">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="n">rst_n</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">15</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rst_n</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span><span class="c1">//复位键
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;=</span><span class="mh">1000</span><span class="p">;</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="o">+</span><span class="mh">1</span><span class="p">)</span><span class="c1">//循环多次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="n">d1</span><span class="o">=</span><span class="p">{</span><span class="nb">$random</span><span class="p">}</span><span class="o">%</span><span class="mh">2</span><span class="p">;</span><span class="c1">//每一个周期0 1变
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">D_in</span><span class="o">&lt;=</span><span class="n">d1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">D_in</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">               <span class="c1">// 结束仿真。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">end</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="k">endmodule</span>
+</span></span><span class="line"><span class="cl">   
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-06-09 22:23:20">更新于 2024-06-09&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" data-title="序列检测状态机" data-hashtags="verilog"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" data-hashtag="verilog"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://nightvoyageryhx.github.io/posts/%E5%BA%8F%E5%88%97%E6%A3%80%E6%B5%8B%E7%8A%B6%E6%80%81%E6%9C%BA/" data-title="序列检测状态机"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/verilog/" class="post-tag" title="标签 - Verilog">Verilog</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/%E4%BB%8E%E5%BB%89%E6%B4%81%E6%96%87%E5%8C%96%E7%9A%84%E4%BC%A0%E6%89%BF%E7%9C%8B%E5%BE%85%E5%BB%89%E6%B4%81%E6%96%B0%E9%A3%8E%E5%B0%9A/" class="post-nav-item" rel="prev" title="从廉洁文化的传承看待廉洁新风尚"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>从廉洁文化的传承看待廉洁新风尚</a>
+      <a href="/posts/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" class="post-nav-item" rel="next" title="计网笔记">计网笔记<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered order-3">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.134.3"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.11"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-2" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">夜航星</a></span></div><div class="footer-line statistics order-1"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">已经运行</span><span class="run-times ms-1">网站运行中……</span></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    window.mermaid = mermaid;
+    window.mermaid.themes = ["default","dark"];
+  </script><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/pace/themes/orange/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"lightgallery":true,"search":{"highlightTag":"em","maxResultLength":12,"noResultsFound":"没有找到结果","snippetLength":30},"siteTime":"2023-11-20T21:15:22+08:00","version":"v0.3.11"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
