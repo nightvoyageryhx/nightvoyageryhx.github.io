@@ -132,5 +132,5 @@ FDMA时延：$D=m\Big[ 1 &#43;\frac{S}{2 ( 1 -S )}\Big] =\frac{m ( 2 -S )}{2 ( 1
 ---
 
 > 作者: 夜航星  
-> URL: http://localhost:1313/posts/%E9%80%9A%E7%BD%91%E7%AC%94%E8%AE%B0/  
+> URL: https://nightvoyageryhx.github.io/posts/%E9%80%9A%E7%BD%91%E7%AC%94%E8%AE%B0/  
 

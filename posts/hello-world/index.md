@@ -9,5 +9,5 @@
 ---
 
 > 作者: 夜航星  
-> URL: http://localhost:1313/posts/hello-world/  
+> URL: https://nightvoyageryhx.github.io/posts/hello-world/  
 

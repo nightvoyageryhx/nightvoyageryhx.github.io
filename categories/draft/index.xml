@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Draft - 分类 - 夜航星</title>
-    <link>http://localhost:1313/categories/draft/</link>
+    <link>https://nightvoyageryhx.github.io/categories/draft/</link>
     <description>夜航星的博客</description>
     <generator>Hugo 0.134.3 &amp; FixIt v0.3.11</generator>
     <language>zh-CN</language>
     <copyright>夜航星</copyright>
     <lastBuildDate>Sun, 22 Sep 2024 17:43:26 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/draft/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://nightvoyageryhx.github.io/categories/draft/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algo测试</title>
-      <link>http://localhost:1313/posts/a1c20ac/</link>
+      <link>https://nightvoyageryhx.github.io/posts/a1c20ac/</link>
       <pubDate>Sun, 22 Sep 2024 17:43:26 +0800</pubDate>
-      <guid>http://localhost:1313/posts/a1c20ac/</guid>
-      <category domain="http://localhost:1313/categories/draft/">Draft</category>
+      <guid>https://nightvoyageryhx.github.io/posts/a1c20ac/</guid>
+      <category domain="https://nightvoyageryhx.github.io/categories/draft/">Draft</category>
       <description>Algo测试</description>
     </item>
   </channel>
