@@ -1,1 +1,0 @@
-ALGOLIA_APP_ID={{ 533DTRQVSI }} ALGOLIA_ADMIN_KEY={{ 6ba85e1a42a0bdc6234bba86036d57c2 }} ALGOLIA_INDEX_NAME={{ index.zh }} ALGOLIA_INDEX_FILE={{ /search.json }} npm run algolia
