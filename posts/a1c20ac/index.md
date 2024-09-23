@@ -1,13 +1,15 @@
-# Algo测试
+# Algolia测试
 
 
 &lt;!--more--&gt;
 
 algo 测试 流风回雪
 
+搜索栏输入“流风”测试
+
 
 ---
 
-> 作者:   
+> 作者: 夜航星  
 > URL: https://nightvoyageryhx.github.io/posts/a1c20ac/  
 
