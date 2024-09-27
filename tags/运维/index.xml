@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>运维 - 标签 - 夜航星</title>
+    <link>https://nightvoyageryhx.github.io/tags/%E8%BF%90%E7%BB%B4/</link>
+    <description>夜航星的博客</description>
+    <generator>Hugo 0.134.3 &amp; FixIt v0.3.11</generator>
+    <language>zh-CN</language>
+    <copyright>夜航星</copyright>
+    <lastBuildDate>Fri, 27 Sep 2024 22:16:46 +0800</lastBuildDate>
+    <atom:link href="https://nightvoyageryhx.github.io/tags/%E8%BF%90%E7%BB%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Batch自动ping并写入日志脚本</title>
+      <link>https://nightvoyageryhx.github.io/posts/44ff12f/</link>
+      <pubDate>Fri, 27 Sep 2024 22:16:46 +0800</pubDate>
+      <guid>https://nightvoyageryhx.github.io/posts/44ff12f/</guid>
+      <category domain="https://nightvoyageryhx.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</category>
+      <description>Batch自动ping并写入日志脚本</description>
+    </item>
+  </channel>
+</rss>

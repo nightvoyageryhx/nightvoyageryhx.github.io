@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Batch自动ping并写入日志脚本 - 夜航星</title><meta name="author" content="夜航星">
+<meta name="description" content="夜航星的博客"><meta name="keywords" content='batch, 运维, 网络'>
+  <meta itemprop="name" content="Batch自动ping并写入日志脚本">
+  <meta itemprop="description" content="夜航星的博客">
+  <meta itemprop="datePublished" content="2024-09-27T22:16:46+08:00">
+  <meta itemprop="dateModified" content="2024-09-27T22:16:46+08:00">
+  <meta itemprop="wordCount" content="913">
+  <meta itemprop="keywords" content="Batch,运维,网络"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/44ff12f/">
+  <meta property="og:site_name" content="夜航星">
+  <meta property="og:title" content="Batch自动ping并写入日志脚本">
+  <meta property="og:description" content="夜航星的博客">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-27T22:16:46+08:00">
+    <meta property="article:modified_time" content="2024-09-27T22:16:46+08:00">
+    <meta property="article:tag" content="Batch">
+    <meta property="article:tag" content="运维">
+    <meta property="article:tag" content="网络">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Batch自动ping并写入日志脚本">
+  <meta name="twitter:description" content="夜航星的博客">
+<meta name="application-name" content="Nightvoyager">
+<meta name="apple-mobile-web-app-title" content="Nightvoyager"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://nightvoyageryhx.github.io/posts/44ff12f/" title="Batch自动ping并写入日志脚本 - 夜航星" /><link rel="prev" type="text/html" href="https://nightvoyageryhx.github.io/posts/a1c20ac/" title="Algolia测试" /><link rel="alternate" type="text/markdown" href="https://nightvoyageryhx.github.io/posts/44ff12f/index.md" title="Batch自动ping并写入日志脚本 - 夜航星"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Batch自动ping并写入日志脚本",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/44ff12f\/"
+    },"genre": "posts","keywords": "batch, 运维, 网络","wordcount":  913 ,
+    "url": "https:\/\/nightvoyageryhx.github.io\/posts\/44ff12f\/","datePublished": "2024-09-27T22:16:46+08:00","dateModified": "2024-09-27T22:16:46+08:00","license": "夜航星","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "夜航星"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="夜航星"><img loading="lazy" src="https://picx.zhimg.com/80/v2-0633d8da949c7076863c5c778c2dea66_720w.png" alt="夜航星" data-title="夜航星" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">NightVoyager</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                >分类</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Batch自动ping并写入日志脚本</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2024-09-27 22:16:46"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-27">2024-09-27</time></span>&nbsp;<span title="913 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Batch自动ping并写入日志脚本"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
+          </span>&nbsp;</div>
+    </div><div class="content" id="content"><p>今天做睿联的笔试时，考了一个编写自动ping并写入日志的脚本的题，我才发现我对bat的传参等用法不太会，于是学了一下怎么写。</p>
+<hr>
+<p>先上代码</p>
+<div class="highlight" title="pinglog.bat"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="p">@</span><span class="k">echo</span> off
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> --------------------------------------
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> ping自动写入log
+</span></span><span class="line"><span class="cl"><span class="k">echo</span>.
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> written by nightvoyager
+</span></span><span class="line"><span class="cl"><span class="k">echo</span>.
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> 2024年9月27日20:01
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> --------------------------------------
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> 按CTRL+C以中止执行
+</span></span><span class="line"><span class="cl"><span class="k">set</span> <span class="k">/p</span> <span class="nv">host</span><span class="p">=</span>请输入需要ping的对象~
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">set</span> <span class="nv">logfile</span><span class="p">=</span>SUCC_<span class="nv">%host%</span>.txt
+</span></span><span class="line"><span class="cl"><span class="k">set</span> <span class="nv">failfile</span><span class="p">=</span>FAIL_<span class="nv">%host%</span>.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">echo</span> 目标地址为<span class="nv">%host%</span>
+</span></span><span class="line"><span class="cl">ping <span class="nv">%host%</span> -n 1
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">%ERRORLEVEL%</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nv">%ERRORLEVEL%</span><span class="o">==</span>0 <span class="k">GOTO</span> <span class="nl">SUCC</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nv">%ERRORLEVEL%</span><span class="o">==</span>1 <span class="k">GOTO</span> <span class="nl">FAIL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nl">SUCC</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> Target Host=<span class="nv">%host%</span> <span class="p">&gt;&gt;</span><span class="nv">%logfile%</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;tokens=*&#34;</span> <span class="se">%%</span>A <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;ping </span><span class="nv">%host%</span><span class="s1"> -n 1 &#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span><span class="k">echo</span> <span class="se">%%</span>A <span class="p">&amp;&amp;</span> <span class="k">echo</span> <span class="se">%%</span>A<span class="p">&gt;&gt;</span><span class="nv">%logfile%</span> <span class="p">&amp;&amp;</span> <span class="k">GOTO</span> <span class="nl">Ping</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nl">Ping</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;tokens=* skip=2&#34;</span> <span class="se">%%</span>A <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;ping </span><span class="nv">%host%</span><span class="s1"> -n 1 &#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">%date%</span> <span class="nv">%time:~0,2%</span>:<span class="nv">%time:~3,2%</span>:<span class="nv">%time:~6,2%</span> <span class="se">%%</span>A<span class="p">&gt;&gt;</span><span class="nv">%logfile%</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">%date%</span> <span class="nv">%time:~0,2%</span>:<span class="nv">%time:~3,2%</span>:<span class="nv">%time:~6,2%</span> <span class="se">%%</span>A
+</span></span><span class="line"><span class="cl">    timeout 1 <span class="p">&gt;</span>nul
+</span></span><span class="line"><span class="cl">    <span class="k">GOTO</span> <span class="nl">Ping</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nl">FAIL</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> Target Host=<span class="nv">%host%</span> <span class="p">&gt;&gt;</span><span class="nv">%failfile%</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;tokens=*&#34;</span> <span class="se">%%</span>B <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;ping </span><span class="nv">%host%</span><span class="s1"> -n 1 &#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span><span class="k">echo</span> <span class="se">%%</span>B <span class="p">&amp;&amp;</span> <span class="k">echo</span> <span class="se">%%</span>B<span class="p">&gt;&gt;</span><span class="nv">%failfile%</span> <span class="p">&amp;&amp;</span> <span class="k">GOTO</span> <span class="nl">Faping</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nl">Faping</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;tokens=* skip=2&#34;</span> <span class="se">%%</span>B <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;ping </span><span class="nv">%host%</span><span class="s1"> -n 1 &#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">%date%</span> <span class="nv">%time:~0,2%</span>:<span class="nv">%time:~3,2%</span>:<span class="nv">%time:~6,2%</span> <span class="se">%%</span>B<span class="p">&gt;&gt;</span><span class="nv">%failfile%</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">%date%</span> <span class="nv">%time:~0,2%</span>:<span class="nv">%time:~3,2%</span>:<span class="nv">%time:~6,2%</span> <span class="se">%%</span>B
+</span></span><span class="line"><span class="cl">    timeout 1 <span class="p">&gt;</span>nul
+</span></span><span class="line"><span class="cl">    <span class="k">GOTO</span> <span class="nl">Faping</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">@</span>cmd /k</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在window系统的batch中，设置变量使用<code>set</code> ,<code>\p</code>表示让用户输入值，<code>=</code>后的值是输入提示。</p>
+<p>使用<code>%变量名称%</code>来使用变量的值</p>
+<p><code>%ERRORLEVEL%</code>表示上一个命令的状态，判断上一个命令是否执行成果，成功则为   0 ，失败则为 1 。在这个脚本中，当ping通的时候，其值为1，否则为0。这个变量不需要提前声明，可以直接使用。依次，我们可以分别设定<code>ping</code>成功与失败时的操作。</p>
+<p><code>echo Target Host=%host% &gt;&gt;%failfile%</code></p>
+<p>这一句用来将信息写入日志。其中<code>%failfle%</code>在前面已经声明了。如果工作目录下没有该文件，则batch会自动创建文件。<strong>注意前面声明的时候要加上文件类型的后缀。</strong></p>
+<p><code>GOTO</code>就是跳转到声明为<code>:名称</code>的地方并执行后续的命令。</p>
+<p>对于<code>for /f &quot;tokens=*&quot; %%B in ('ping %host% -n 1 ') do (echo %%B &amp;&amp; echo %%B&gt;&gt;%failfile% &amp;&amp; GOTO Faping)</code></p>
+<p>看起来是一个很复杂的命令，把它分为几个部分</p>
+<p>基本格式： <code>for %%i in (command1) do command2</code></p>
+<p>类似于C语言的for命令，可用作循环语句。</p>
+<p><code>%%i in (command1)</code>中，<code>i</code>可以是任意字母，区分大小写，表示<code>command1</code>的结果，也有点像linux的管道符<code>|</code>。</p>
+<p><code>do command2</code>表示执行后续的命令，可以几个命令连用，就像上面的代码，同时执行<code>ping</code>和<code>echo</code>，并且可以使用<code>%%i</code></p>
+<p><code>&quot;token=*&quot;</code>是可选项，表示忽略开头的空格，它的值还可以是数字。具体用法请上网搜索。</p>
+<p><code>&quot;skip=n&quot;</code>也是可选项，其中<code>n</code>为整数。表示<code>%%i</code>的值为<code>command1</code>的结果的第n行。</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2024-09-27 22:16:46">更新于 2024-09-27&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/44ff12f/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="https://nightvoyageryhx.github.io/posts/44ff12f/" data-title="Batch自动ping并写入日志脚本" data-hashtags="batch,运维,网络"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://nightvoyageryhx.github.io/posts/44ff12f/" data-hashtag="batch"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://nightvoyageryhx.github.io/posts/44ff12f/" data-title="Batch自动ping并写入日志脚本"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/batch/" class="post-tag" title="标签 - Batch">Batch</a><a href="/tags/%E8%BF%90%E7%BB%B4/" class="post-tag" title="标签 - 运维">运维</a><a href="/tags/%E7%BD%91%E7%BB%9C/" class="post-tag" title="标签 - 网络">网络</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/a1c20ac/" class="post-nav-item" rel="prev" title="Algolia测试"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Algolia测试</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered order-3">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.134.3"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.11"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright order-2" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">夜航星</a></span></div><div class="footer-line statistics order-1"><span class="site-time" title='网站运行中……'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">已经运行</span><span class="run-times ms-1">网站运行中……</span></span></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='总访客数'><i class="fa-regular fa-user fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='总访问量'><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/pace/themes/orange/pace-theme-minimal.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="https://cn.vercount.one/js" async defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"533DTRQVSI","algoliaIndex":"index.zh","algoliaSearchKey":"2828a938746feb74f1bdcfcb95d31acc","highlightTag":"em","maxResultLength":12,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"},"siteTime":"2023-11-20T21:15:22+08:00","version":"v0.3.11"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
