@@ -11,7 +11,7 @@
   <meta itemprop="description" content="夜航星的博客">
   <meta itemprop="datePublished" content="2024-09-27T22:16:46+08:00">
   <meta itemprop="dateModified" content="2024-09-27T22:16:46+08:00">
-  <meta itemprop="wordCount" content="913">
+  <meta itemprop="wordCount" content="977">
   <meta itemprop="keywords" content="Batch,运维,网络"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/44ff12f/">
   <meta property="og:site_name" content="夜航星">
   <meta property="og:title" content="Batch自动ping并写入日志脚本">
@@ -42,7 +42,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/44ff12f\/"
-    },"genre": "posts","keywords": "batch, 运维, 网络","wordcount":  913 ,
+    },"genre": "posts","keywords": "batch, 运维, 网络","wordcount":  977 ,
     "url": "https:\/\/nightvoyageryhx.github.io\/posts\/44ff12f\/","datePublished": "2024-09-27T22:16:46+08:00","dateModified": "2024-09-27T22:16:46+08:00","license": "夜航星","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -152,7 +152,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Batch自动ping并写入日志脚本</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2024-09-27 22:16:46"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-27">2024-09-27</time></span>&nbsp;<span title="913 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Batch自动ping并写入日志脚本"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2024-09-27 22:16:46"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-27">2024-09-27</time></span>&nbsp;<span title="977 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Batch自动ping并写入日志脚本"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
           </span>&nbsp;</div>
     </div><div class="content" id="content"><p>今天做睿联的笔试时，考了一个编写自动ping并写入日志的脚本的题，我才发现我对bat的传参等用法不太会，于是学了一下怎么写。</p>
 <hr>
@@ -250,12 +250,18 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">@</span>cmd /k</span></span></code></pre></td></tr></table>
 </div>
-</div><p>在window系统的batch中，设置变量使用<code>set</code> ,<code>\p</code>表示让用户输入值，<code>=</code>后的值是输入提示。</p>
+</div><hr>
+<p>在window系统的batch中，设置变量使用<code>set</code> ,<code>\p</code>表示让用户输入值，<code>=</code>后的值是输入提示。</p>
+<hr>
 <p>使用<code>%变量名称%</code>来使用变量的值</p>
-<p><code>%ERRORLEVEL%</code>表示上一个命令的状态，判断上一个命令是否执行成果，成功则为   0 ，失败则为 1 。在这个脚本中，当ping通的时候，其值为1，否则为0。这个变量不需要提前声明，可以直接使用。依次，我们可以分别设定<code>ping</code>成功与失败时的操作。</p>
+<hr>
+<p><code>%ERRORLEVEL%</code>表示上一个命令的状态，判断上一个命令是否执行成果，成功则为   0 ，失败则为 1 。在这个脚本中，当ping通的时候，其值为1，否则为0。这个变量不需要提前声明，可以直接使用。依此，我们可以分别设定<code>ping</code>成功与失败时的操作。</p>
+<hr>
 <p><code>echo Target Host=%host% &gt;&gt;%failfile%</code></p>
 <p>这一句用来将信息写入日志。其中<code>%failfle%</code>在前面已经声明了。如果工作目录下没有该文件，则batch会自动创建文件。<strong>注意前面声明的时候要加上文件类型的后缀。</strong></p>
+<hr>
 <p><code>GOTO</code>就是跳转到声明为<code>:名称</code>的地方并执行后续的命令。</p>
+<hr>
 <p>对于<code>for /f &quot;tokens=*&quot; %%B in ('ping %host% -n 1 ') do (echo %%B &amp;&amp; echo %%B&gt;&gt;%failfile% &amp;&amp; GOTO Faping)</code></p>
 <p>看起来是一个很复杂的命令，把它分为几个部分</p>
 <p>基本格式： <code>for %%i in (command1) do command2</code></p>
@@ -263,7 +269,11 @@
 <p><code>%%i in (command1)</code>中，<code>i</code>可以是任意字母，区分大小写，表示<code>command1</code>的结果，也有点像linux的管道符<code>|</code>。</p>
 <p><code>do command2</code>表示执行后续的命令，可以几个命令连用，就像上面的代码，同时执行<code>ping</code>和<code>echo</code>，并且可以使用<code>%%i</code></p>
 <p><code>&quot;token=*&quot;</code>是可选项，表示忽略开头的空格，它的值还可以是数字。具体用法请上网搜索。</p>
-<p><code>&quot;skip=n&quot;</code>也是可选项，其中<code>n</code>为整数。表示<code>%%i</code>的值为<code>command1</code>的结果的第n行。</p></div><div class="post-footer" id="post-footer">
+<hr>
+<p><code>&quot;skip=n&quot;</code>也是可选项，其中<code>n</code>为整数。表示<code>%%i</code>的值为<code>command1</code>的结果的第n行。</p>
+<hr>
+<p><code>%time:~0,2%</code>表示取时间从左往右的0-2位。</p>
+<p>使用<code>echo %time%</code>命令可以查看时间的默认格式，是hh:mm:ss.ss</p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
