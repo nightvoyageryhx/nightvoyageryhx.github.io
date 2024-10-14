@@ -7,8 +7,16 @@
     <generator>Hugo 0.134.3 &amp; FixIt v0.3.11</generator>
     <language>zh-CN</language>
     <copyright>夜航星</copyright>
-    <lastBuildDate>Fri, 27 Sep 2024 22:16:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2024 22:43:04 +0800</lastBuildDate>
     <atom:link href="https://nightvoyageryhx.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java简单输入输出</title>
+      <link>https://nightvoyageryhx.github.io/posts/a3d125f/</link>
+      <pubDate>Mon, 14 Oct 2024 22:43:04 +0800</pubDate>
+      <guid>https://nightvoyageryhx.github.io/posts/a3d125f/</guid>
+      <category domain="https://nightvoyageryhx.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</category>
+      <description>Java简单输入输出</description>
+    </item>
     <item>
       <title>Batch自动ping并写入日志脚本</title>
       <link>https://nightvoyageryhx.github.io/posts/44ff12f/</link>
