@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "C:/Users/zsw/yhxgo/hugoblog",
+	"sourceRoot": "C:/Users/zsw/WPS Cloud Files/yhxgo/hugoblog",
 	"sources": [
 		"themes/FixIt-0.3.11/assets/css/style.scss",
 		"themes/FixIt-0.3.11/assets/css/_variables.scss",
