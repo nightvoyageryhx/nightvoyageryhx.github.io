@@ -11,7 +11,7 @@
   <meta itemprop="description" content="记录一下毕设">
   <meta itemprop="datePublished" content="2025-03-03T23:56:24+08:00">
   <meta itemprop="dateModified" content="2025-03-03T23:56:24+08:00">
-  <meta itemprop="wordCount" content="9">
+  <meta itemprop="wordCount" content="434">
   <meta itemprop="keywords" content="机器学习,毕设,声学"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/88b29af/">
   <meta property="og:site_name" content="夜航星">
   <meta property="og:title" content="毕设《基于深度学习的音乐源分离》">
@@ -42,7 +42,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/88b29af\/"
-    },"genre": "posts","keywords": "机器学习, 毕设, 声学","wordcount":  9 ,
+    },"genre": "posts","keywords": "机器学习, 毕设, 声学","wordcount":  434 ,
     "url": "https:\/\/nightvoyageryhx.github.io\/posts\/88b29af\/","datePublished": "2025-03-03T23:56:24+08:00","dateModified": "2025-03-03T23:56:24+08:00","license": "夜航星","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -152,9 +152,156 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>毕设《基于深度学习的音乐源分离》</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2025-03-03 23:56:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-03-03">2025-03-03</time></span>&nbsp;<span title="9 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 100 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="毕设《基于深度学习的音乐源分离》"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2025-03-03 23:56:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-03-03">2025-03-03</time></span>&nbsp;<span title="434 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="毕设《基于深度学习的音乐源分离》"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
           </span>&nbsp;</div>
-    </div><div class="content" id="content"><p>记录一下毕设的内容</p></div><div class="post-footer" id="post-footer">
+    </div><div class="content" id="content"><p>记录一下毕设的内容</p>
+<p>搜了一下主要有两种分离方式，一种是用频谱图的，即用stft（短时傅里叶变化）对音频进行处理。这样特征图同时包含时域和频域的信息。另一种是直接基于波形在时域进行处理分离的，</p>
+<p>评价指标：signal to distortion ratio(SDR)
+$$
+\mathrm{SDR}:=10\log_{10}\frac{|s_{\mathrm{target}}|^2}{|e_{\mathrm{interf}}+e_{\mathrm{artif}}|^2}
+$$</p>
+<p><a href="https://github.com/facebookresearch/demucs?tab=readme-ov-file"target="_blank" rel="external nofollow noopener noreferrer">facebookresearch/demucs: Code for the paper Hybrid Spectrogram and Waveform Source Separation</a>给出了各模型的性能，如下</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Model</th>
+          <th style="text-align: left">Domain</th>
+          <th style="text-align: left">Extra data?</th>
+          <th style="text-align: left">Overall SDR</th>
+          <th style="text-align: left">MOS Quality</th>
+          <th style="text-align: left">MOS Contamination</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/f90/Wave-U-Net"target="_blank" rel="external nofollow noopener noreferrer">Wave-U-Net</a></td>
+          <td style="text-align: left">waveform</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">3.2</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/sigsep/open-unmix-pytorch"target="_blank" rel="external nofollow noopener noreferrer">Open-Unmix</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">5.3</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/2010.01733"target="_blank" rel="external nofollow noopener noreferrer">D3Net</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">6.0</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/facebookresearch/demucs/tree/v2"target="_blank" rel="external nofollow noopener noreferrer">Conv-Tasnet</a></td>
+          <td style="text-align: left">waveform</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">5.7</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/facebookresearch/demucs/tree/v2"target="_blank" rel="external nofollow noopener noreferrer">Demucs (v2)</a></td>
+          <td style="text-align: left">waveform</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">6.3</td>
+          <td style="text-align: left">2.37</td>
+          <td style="text-align: left">2.36</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/2109.05418"target="_blank" rel="external nofollow noopener noreferrer">ResUNetDecouple+</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">6.7</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/kuielab/mdx-net-submission"target="_blank" rel="external nofollow noopener noreferrer">KUIELAB-MDX-Net</a></td>
+          <td style="text-align: left">hybrid</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">7.5</td>
+          <td style="text-align: left"><strong>2.86</strong></td>
+          <td style="text-align: left">2.55</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/2209.15174"target="_blank" rel="external nofollow noopener noreferrer">Band-Spit RNN</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left"><strong>8.2</strong></td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Hybrid Demucs (v3)</strong></td>
+          <td style="text-align: left">hybrid</td>
+          <td style="text-align: left">no</td>
+          <td style="text-align: left">7.7</td>
+          <td style="text-align: left"><strong>2.83</strong></td>
+          <td style="text-align: left"><strong>3.04</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/1805.02410"target="_blank" rel="external nofollow noopener noreferrer">MMDenseLSTM</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">804 songs</td>
+          <td style="text-align: left">6.0</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/2010.01733"target="_blank" rel="external nofollow noopener noreferrer">D3Net</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">1.5k songs</td>
+          <td style="text-align: left">6.7</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/deezer/spleeter"target="_blank" rel="external nofollow noopener noreferrer">Spleeter</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">25k songs</td>
+          <td style="text-align: left">5.9</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://arxiv.org/abs/2209.15174"target="_blank" rel="external nofollow noopener noreferrer">Band-Spit RNN</a></td>
+          <td style="text-align: left">spectrogram</td>
+          <td style="text-align: left">1.7k (mixes only)</td>
+          <td style="text-align: left"><strong>9.0</strong></td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>HT Demucs f.t. (v4)</strong></td>
+          <td style="text-align: left">hybrid</td>
+          <td style="text-align: left">800 songs</td>
+          <td style="text-align: left"><strong>9.0</strong></td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+  </tbody>
+</table>
+<p>先复现一下demucs的，已经是第四个版本了</p>
+<hr>
+<p>参考b站一位北交姐姐的视频和github上的文档安装了一下
+<div class="bilibili">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1dz4y1X7ka&page=1&autoplay=false&poster=true&muted=false&danmaku=true&t=0" border="0" framespacing="0" allowfullscreen="true"></iframe>
+</div></p>
+<p>先把github上的项目clone一下，然后去到项目的根目录，打开anaconda配一下环境。我这里装有gpu的版本。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conda env update -f environment-cuda.yml</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为之前搞cv大作业用了一下anaconda，所以有一些换镜像之类的操作就没有再次赘述，anaconda的使用就上网搜或者看我之前的<a href="https://www.lostune.top/2025/01/11/anaconda%e3%80%81tensorflow%e5%92%8cpytorch%e7%9a%84%e9%85%8d%e7%bd%ae%e5%92%8c%e4%bd%bf%e7%94%a8%e9%97%ae%e9%a2%98/"target="_blank" rel="external nofollow noopener noreferrer">笔记</a></p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
