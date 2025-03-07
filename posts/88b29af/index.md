@@ -7,7 +7,7 @@
 
 搜了一下主要有两种分离方式，一种是用频谱图的，即用stft（短时傅里叶变化）对音频进行处理。这样特征图同时包含时域和频域的信息。另一种是直接基于波形在时域进行处理分离的，
 
-评价指标：signal to distortion ratio(SDR)
+评价指标：信号失真比 signal to distortion ratio(SDR)
 $$
 \mathrm{SDR}:=10\log_{10}\frac{\|s_{\mathrm{target}}\|^2}{\|e_{\mathrm{interf}}&#43;e_{\mathrm{artif}}\|^2}
 $$
@@ -76,7 +76,7 @@ demucs的文档说
 &gt;
 &gt; 如果 GPU 内存不足，只需在命令行中添加 `-d cpu` 以使用 CPU。使用 Demucs 时，处理时间大约为音轨时长的 1.5 倍。
 
-但是Hybrid Transformer 模型（如 `htdemucs`）的分段长度不能超过 **7.8 秒**，即使设置为 `8`，实际会被自动截断。
+但是 Hybrid Transformer 模型（如 `htdemucs`）的分段长度不能超过 **7.8 秒**，即使设置为 `8`，实际会被自动截断。
 
 我一开始设置为8，就报错了。
 

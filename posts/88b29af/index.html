@@ -11,7 +11,7 @@
   <meta itemprop="description" content="记录一下毕设">
   <meta itemprop="datePublished" content="2025-03-03T23:56:24+08:00">
   <meta itemprop="dateModified" content="2025-03-03T23:56:24+08:00">
-  <meta itemprop="wordCount" content="1990">
+  <meta itemprop="wordCount" content="1985">
   <meta itemprop="keywords" content="机器学习,毕设,声学"><meta property="og:url" content="https://nightvoyageryhx.github.io/posts/88b29af/">
   <meta property="og:site_name" content="夜航星">
   <meta property="og:title" content="毕设《基于深度学习的音乐源分离》">
@@ -42,7 +42,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/nightvoyageryhx.github.io\/posts\/88b29af\/"
-    },"genre": "posts","keywords": "机器学习, 毕设, 声学","wordcount":  1990 ,
+    },"genre": "posts","keywords": "机器学习, 毕设, 声学","wordcount":  1985 ,
     "url": "https:\/\/nightvoyageryhx.github.io\/posts\/88b29af\/","datePublished": "2025-03-03T23:56:24+08:00","dateModified": "2025-03-03T23:56:24+08:00","license": "夜航星","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -152,11 +152,11 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>毕设《基于深度学习的音乐源分离》</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2025-03-03 23:56:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-03-03">2025-03-03</time></span>&nbsp;<span title="1990 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="毕设《基于深度学习的音乐源分离》"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img loading="lazy" src="https://pica.zhimg.com/80/v2-26218235ca6402395b40663882259764_720w.png" alt="夜航星" data-title="夜航星" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;夜航星</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category" title="分类 - 学习记录"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习记录</a></span></div><div class="post-meta-line"><span title="发布于 2025-03-03 23:56:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-03-03">2025-03-03</time></span>&nbsp;<span title="1985 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="毕设《基于深度学习的音乐源分离》"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;次阅读
           </span>&nbsp;</div>
     </div><div class="content" id="content"><p>记录一下毕设的内容</p>
 <p>搜了一下主要有两种分离方式，一种是用频谱图的，即用stft（短时傅里叶变化）对音频进行处理。这样特征图同时包含时域和频域的信息。另一种是直接基于波形在时域进行处理分离的，</p>
-<p>评价指标：signal to distortion ratio(SDR)
+<p>评价指标：信号失真比 signal to distortion ratio(SDR)
 $$
 \mathrm{SDR}:=10\log_{10}\frac{|s_{\mathrm{target}}|^2}{|e_{\mathrm{interf}}+e_{\mathrm{artif}}|^2}
 $$</p>
@@ -340,7 +340,7 @@ $$</p>
 <blockquote><p><strong>GPU 加速的内存需求</strong>
 如果你想使用 GPU 加速，至少需要 3GB 的 GPU 内存。但如果使用默认参数，大约需要 7GB 内存。使用 <code>--segment SEGMENT</code> 来更改每个分段的大小。如果只有 3GB 内存，将 <code>SEGMENT</code> 设置为 8（但如果该参数太小，质量可能会下降）。设置环境变量 <code>PYTORCH_NO_CUDA_MEMORY_CACHING=1</code> 可以帮助内存更小的用户（如 2GB），但这会使分离速度变慢。</p>
 <p>如果 GPU 内存不足，只需在命令行中添加 <code>-d cpu</code> 以使用 CPU。使用 Demucs 时，处理时间大约为音轨时长的 1.5 倍。</p>
-</blockquote><p>但是Hybrid Transformer 模型（如 <code>htdemucs</code>）的分段长度不能超过 <strong>7.8 秒</strong>，即使设置为 <code>8</code>，实际会被自动截断。</p>
+</blockquote><p>但是 Hybrid Transformer 模型（如 <code>htdemucs</code>）的分段长度不能超过 <strong>7.8 秒</strong>，即使设置为 <code>8</code>，实际会被自动截断。</p>
 <p>我一开始设置为8，就报错了。</p>
 <p>实际我是这样用的：</p>
 <div class="highlight"><div class="chroma">
