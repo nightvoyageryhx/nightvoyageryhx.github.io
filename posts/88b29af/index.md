@@ -325,15 +325,16 @@ pip install librosa
 
 工具包官方使用了四个量化指标来计算分离后的音源信号的全局性能，分别是信源失真比（Source to Distortion Ratio, SDR），信源干扰比（Source to Interferences Ratio, SIR），信源噪声比（Sources to Noise Ratio, SNR）和信源伪影比（Sources to Artifacts Ratio, SAR）。这几个指标的值越高，则说明被评估的信号有着越好的鲁棒性与低噪声性能，算法的分离效果越好，它们的具体计算公式定义如下
 $$
-\begin{aligned}
- &amp; SDR=10log_{10}\frac{\left\|s_{target}(t)\right\|^2}{\left\|e_{interf}(t)&#43;e_{noise}(t)&#43;e_{artif}(t)\right\|^2} \\
- \\
- &amp; SIR=10log_{10}\frac{\left\|s_{target}(t)\right\|^{2}}{\left\|e_{artif}(t)\right\|^{2}} \\
- \\
- &amp; SNR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)\right\|^2}{\|e_{noise}(t)\|^2} \\
- \\
- &amp; SAR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)&#43;e_{noise}(t)\right\|^{2}}{\left\|e_{artif}\right\|^{2}}
-\end{aligned}
+SDR=10log_{10}\frac{\left\|s_{target}(t)\right\|^2}{\left\|e_{interf}(t)&#43;e_{noise}(t)&#43;e_{artif}(t)\right\|^2}
+$$
+$$
+SIR=10log_{10}\frac{\left\|s_{target}(t)\right\|^{2}}{\left\|e_{artif}(t)\right\|^{2}} \\
+$$
+$$
+SNR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)\right\|^2}{\|e_{noise}(t)\|^2} \\
+$$
+$$
+SAR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)&#43;e_{noise}(t)\right\|^{2}}{\left\|e_{artif}\right\|^{2}}
 $$
 
 --------
