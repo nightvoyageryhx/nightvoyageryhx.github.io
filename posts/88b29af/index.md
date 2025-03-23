@@ -31,6 +31,8 @@ $$
 | [Band-Spit RNN](https://arxiv.org/abs/2209.15174)            | spectrogram | 1.7k (mixes only) | **9.0**     | -           | -                 |
 | **HT Demucs f.t. (v4)**                                      | hybrid      | 800 songs         | **9.0**     | -           | -                 |
 
+# 复现
+
 先复现一下demucs的，已经是第四个版本了
 
 ----------
@@ -160,7 +162,7 @@ torch.cuda.is_available()
 然后就装了一个pytorch-cuda
 
 ```
-&gt;conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 
 装好之后，再验证就是true了
@@ -180,6 +182,331 @@ torch.cuda.is_available()
 ----
 
 既然复现完毕下一步就是训练我的模型了。
+
+# 训练
+
+## librosa
+
+[Librosa](https://github.com/librosa/librosa)是一个Python库，专门用于音频和音乐信号分析。它提供了一系列功能，包括音频特征提取、音频可视化、节奏分析、音频处理等等。Librosa库是开源的，广泛用于音乐信息检索、音频信号处理、机器学习等领域。
+
+## 构建数据集
+
+我打算用demucs来训练，数据集格式和musDB类似，结构如下
+
+```
+my_dataset/
+  ├── train/               # 训练集
+  │   ├── song1/           # 每首歌曲一个文件夹
+  │   │   ├── mixture.wav  # 混合音频
+  │   │   ├── vocals.wav   # 干声音轨（必须）
+  │   │   ├── drums.wav    # 其他可选音轨
+  │   │   └── ...
+  ├── valid/               # 验证集（结构同train）
+  └── test/                # 测试集（结构同train）
+```
+
+复制了一个demucs的环境，以免后续修改把能用的搞坏了
+
+```
+conda create -n demucs_train --clone demucs
+```
+
+让deepseek帮我写了一个构建数据集的python脚本和重命名文件的bat脚本
+
+```python {title=&#34;generate_mixes.py&#34;}
+# generate_mixes.py
+from pathlib import Path
+import librosa
+import soundfile as sf
+import numpy as np
+import random
+
+
+def generate_mixes(input_dir, output_dir, num_mixes=1000):
+    input_dir = Path(input_dir)
+    output_dir = Path(output_dir)
+    output_dir.mkdir(exist_ok=True)
+
+    instruments = [&#34;dizi&#34;, &#34;yangqin&#34;, &#34;pipa&#34;, &#34;other&#34;]
+
+    for i in range(num_mixes):
+        mix_id = f&#34;mix_{i:04d}&#34;
+        (output_dir / mix_id).mkdir(exist_ok=True)
+        print(&#34;generate mix_%d&#34; % i)
+
+        mix = None
+        # 为每个音轨选择随机片段
+        for instr in instruments:
+            # 随机选择一个干声文件
+            files = list((input_dir / instr).glob(&#34;*.wav&#34;))
+            if not files:
+                continue
+            file = random.choice(files)
+
+            # 加载并标准化
+            audio, sr = librosa.load(file, sr=44100)
+            audio /= np.max(np.abs(audio))  # 归一化
+
+            # 随机增益
+            gain = 10 ** (random.uniform(-6, 3) / 20)
+            audio *= gain
+
+            # 保存单独音轨
+            sf.write(output_dir / mix_id / f&#34;{instr}.wav&#34;, audio, sr)
+
+            # 混合到总音轨
+            if mix is None:
+                mix = audio.copy()
+            else:
+                if len(audio) &gt; len(mix):
+                    mix = np.pad(mix, (0, len(audio) - len(mix)))
+                mix[:len(audio)] &#43;= audio
+
+        # 标准化总音轨
+        peak = np.max(np.abs(mix))
+        if peak &gt; 1:
+            mix /= peak
+            # 重新保存各音轨
+            for instr in instruments:
+                track_file = output_dir / mix_id / f&#34;{instr}.wav&#34;
+                if track_file.exists():
+                    track_audio, _ = librosa.load(track_file, sr=44100)
+                    track_audio /= peak
+                    sf.write(track_file, track_audio, 44100)
+
+        # 保存混合音频
+        sf.write(output_dir / mix_id / &#34;mixture.wav&#34;, mix, 44100)
+
+
+if __name__ == &#34;__main__&#34;:
+    generate_mixes(
+        input_dir=&#34;path/to/your/instruments&#34;, # 这里放音轨的路径
+        output_dir=&#34;custom_dataset/musdb_train&#34;, #在python项目的根目录创建一个这个路径的文件夹，不然会报错
+        num_mixes=5000
+    )
+```
+
+```bash {title=&#34;rename.bat&#34;}
+@echo off
+setlocal enabledelayedexpansion
+
+for /l %%i in (1,1,999) do (
+    if exist &#34;%%i.wav&#34; (
+        set &#34;num=00%%i&#34;
+        ren &#34;%%i.wav&#34; &#34;!num:~-3!.wav&#34;
+    )
+)
+endlocal
+```
+
+python脚本要用librosa所以在conda里面装一个
+
+````bash
+pip install librosa
+````
+
+然后就可以执行脚本里，注意解释器要用克隆后的环境。
+
+## demucs训练准备
+
+前面准备了数据集，后面就在demucs训练
+
+训练遇到了点问题，demucs这个训练文档比较模糊，还有里面提到的文件在源码里也没有。
+
+# 论文笔记
+
+卷积神经网络[41]中的特征块包含了三个维度信息：宽度、高度以及通道。其结构主要由输入层、卷积层（convolution layer）、池化层（pooling layer）、 全连接层（full-connection layer）、激活层（activation layer）和输出层等结构堆叠构成
+
+卷积层和池化层实现了对输入特征的提取功能，网络中需要学习的权重值和偏置值主要来自卷积层，而权重值和偏置值的数量反应了卷积神经网络的计算量。
+
+注意力机制是目前深度学习领域中非常重要的技术，它所关注的问题其实就是处理输入特征信息数据的权重分配问题
+
+目前用于评估分离后的音乐源信号质量指标主要是使用盲源分离评估工具包 [40]（Blind Source Separation Evaluation toolbox, BSS_EVAL toolbox）来进行分析
+
+工具包官方使用了四个量化指标来计算分离后的音源信号的全局性能，分别是信源失真比（Source to Distortion Ratio, SDR），信源干扰比（Source to Interferences Ratio, SIR），信源噪声比（Sources to Noise Ratio, SNR）和信源伪影比（Sources to Artifacts Ratio, SAR）。这几个指标的值越高，则说明被评估的信号有着越好的鲁棒性与低噪声性能，算法的分离效果越好，它们的具体计算公式定义如下
+$$
+\begin{aligned}
+ &amp; SDR=10log_{10}\frac{\left\|s_{target}(t)\right\|^2}{\left\|e_{interf}(t)&#43;e_{noise}(t)&#43;e_{artif}(t)\right\|^2} \\
+ \\
+ &amp; SIR=10log_{10}\frac{\left\|s_{target}(t)\right\|^{2}}{\left\|e_{artif}(t)\right\|^{2}} \\
+ \\
+ &amp; SNR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)\right\|^2}{\|e_{noise}(t)\|^2} \\
+ \\
+ &amp; SAR=10log_{10}\frac{\left\|s_{target}(t)&#43;e_{interf}(t)&#43;e_{noise}(t)\right\|^{2}}{\left\|e_{artif}\right\|^{2}}
+\end{aligned}
+$$
+
+--------
+
+
+
+进去先换一个路径
+
+```bash
+cd ~/open-unmix-pytorch/scripts
+conda activate umx1 #umx1是我的环境名
+```
+
+记得要激活环境
+
+```bash
+conda activate umx1 #umx1是我的环境名
+```
+
+用open-unmix训练，这是训练的命令，各参数具体含义看文档
+
+```bash
+python train.py --output &#34;models/test_model1&#34; --batch-size 16 --seq-dur 2 --epochs 1 --lr 0.001 --nb-workers 8
+```
+
+开始训练后会有提示，如下
+
+```
+(umx1) root@DESKTOP:~/open-unmix-pytorch/scripts# python train.py --output &#34;~/open-unmix-pytorch/test_model2&#34; --batch-size 16 --seq-dur 2 --epochs 5 --lr 0.001 --nb-workers 4                                                          Using GPU: True                                                                                                         Compute dataset statistics: 100%|███████████████████████████████████████████████████████|  80/80 [00:24&lt;00:00,  3.26it/s]
+Training epoch:   0%|                                                                             | 0/5 [00:00&lt;?, ?it/s]
+Training batch:   4%|█▉                                                   | 12/320 [00:34&lt;08:32,  1.66s/it, loss=25.842]
+```
+
+![](https://dlink.host/wx2.sinaimg.cn/large/0075RS9aly8hzf93llejlj30x8069jt6.jpg)
+
+![](https://dlink.host/wx2.sinaimg.cn/large/0075RS9aly8hzf9hdjhupj30xd06qac0.jpg)
+
+一个epoch的损失是4.32，基本用不了，先试试能不能分离
+
+```
+umx &#34;/mnt/c/Users/zsw/OneDrive/桌面/temp/雨天.flac&#34;     --model &#34;test_model1&#34;  --targets vocals --residual residual 
+```
+
+wsl不能分离，但是导出到win10就可以，也不知道为什么，效果比较差，因为loss还很高。
+
+open-unmix是每个分离轨道单独训练的，再使用`seperator.json`分别分离，所以每个轨道都需要单独训练。
+
+再训练一个bass的。
+
+```
+python train.py --target bass --output &#34;models/test_bass&#34; --batch-size 16 --seq-dur 2 --epochs 2 --lr 0.001 --nb-workers 8 
+```
+
+![](https://dlink.host/wx1.sinaimg.cn/large/0075RS9aly8hzfbzeykx8j30x904zjt9.jpg)
+
+跑了两个epoch，效果比人声好一点，但是还是很差，不过可以听出来对bass有强化的表现，对其他音轨有衰减。
+
+![image-20250313154943573](../../static/imgs/image-20250313154943573.png)
+
+![](https://dlink.host/wx1.sinaimg.cn/large/0075RS9aly8hzfe65jhpcj30xh0b077e.jpg)
+
+![](https://dlink.host/wx3.sinaimg.cn/large/0075RS9aly8hzfegxs169j30xa06zgon.jpg)
+
+每次epoch还是验证损失还是有下降的，就是跟训练损失差别比较大，可能有过拟合风险
+
+又15个epoch后
+
+![](https://dlink.host/wx4.sinaimg.cn/large/0075RS9aly8hzfgvx7jcvj30xe0duwkp.jpg)
+
+验证损失下降到1.4
+
+贝斯的分离效果大概30个epoch后居然已经比较好了，可能是因为频率比较低，好提取特征。
+
+然后我就训练drums的提取，我换了一个数据集，因为之前训练bass的是默认的musdb18的7秒片段，我还删了一部分来加快训练速度
+
+这次用musdb18hq的部分数据来训练，试试效果
+
+```
+python train.py --root /root/MUSDB18/musdbhq --target drums  --output &#34;models/HQ_bass1&#34; --batch-size 16 --seq-dur 6 --epochs 1 --lr 0.003 --nb-workers 6 --is-wav
+```
+
+```
+python train.py --root /root/MUSDB18/musdbhq --output &#34;models/HQ_drums1&#34; --batch-size 16 --seq-dur 6 --epochs 20 --lr 0.003 --nb-workers 6 --dataset trackfolder_fix --target-file drums.wav --interferer-files bass.wav vocals.wav other.wav
+```
+
+```
+umx &#34;C:\Users\zsw\OneDrive\桌面\temp\开始懂了.flac&#34; --model &#34;F:\openunmix\open-unmix-pytorch\models\test_drums&#34;  --targets drums --residual residual
+```
+
+![image-20250313214947977](../../static/imgs/image-20250313214947977.png)
+
+继续训练的命令
+```
+python train.py --target drums --output &#34;models/test_drums&#34; --batch-size 8 --seq-dur 2 --epochs 15 --lr 0.001 --nb-workers 6 --checkpoint &#34;models/test_drums&#34;
+```
+
+![image-20250314153727912](../../static/imgs/image-20250314153727912.png)
+
+bass大概45个epoch之后，loss已经下降的很缓慢了，也比较符合umx给出的训练曲线，大概就是类似指数函数的倒数，后面的下降应该会逐渐更缓慢。
+
+```
+python train.py --target vocals --output &#34;models/test_vocals&#34; --batch-size 8 --seq-dur 2 --epochs 10 --lr 0.001 --nb-workers 6    
+```
+
+```
+umx &#34;C:\Users\zsw\OneDrive\桌面\temp\开始懂了.flac&#34; --model &#34;F:\openunmix\open-unmix-pytorch\hq_drums2&#34;  --targets drums --residual residual
+```
+
+aligned训练
+
+成功地用我自己的数据集训练出来了
+
+```
+python train.py --output &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34; --root &#34;F:\dataset\test2&#34; --dataset aligned --input-file mixture.wav --output-file dizi.wav --batch-size 1 --epoch 10 --checkpoint &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34;
+```
+
+```
+python train.py --output &#34;models\temp&#34; --root &#34;root\MUSDB18\chwav&#34; --dataset aligned --input-file mixture.wav --output-file dizi.wav --batch-size 1 --epoch 1 
+```
+
+```
+python train.py --output &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34; --root &#34;F:\dataset\stemtest&#34; --batch-size 4 --epoch 1 --checkpoint &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34; --target drums
+```
+
+```
+python train.py --output &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34; --root &#34;F:\dataset\ch2mus_aug_stem&#34; --batch-size 4 --epoch 1 --checkpoint &#34;F:\openunmix\open-unmix-pytorch\scripts\models\temp&#34; --target drums --nb-workers 4
+```
+
+```
+umx &#34;C:\Users\zsw\OneDrive\桌面\temp\mixtest1.wav&#34; --model &#34;F:\openunmix\open-unmix-pytorch\scripts\models\pipa_1&#34;  --targets drums --residual residual --outdir &#34;F:\openunmix\open-unmix-pytorch\scripts\umxoutput&#34;
+```
+
+```
+python train.py --output &#34;./models/yangqin_e03&#34; --root &#34;/root/MUSDB18/ch2mus_augment_wav&#34; --batch-size 1 --epoch 120 --target vocals --nb-workers 6 --input-file mixture.wav --output-file vocals.wav --dataset aligned --checkpoint &#34;./models/yangqin_e03&#34; 
+```
+
+```bash
+umx &#34;C:\Users\zsw\OneDrive\桌面\temp\mixtest2.wav&#34; --model &#34;F:\openunmix\open-unmix-pytorch\scripts\models\yangqin_e04&#34;  --targets vocals --residual residual
+```
+
+
+
+```mermaid
+graph TD
+    A[混合音频输入] --&gt; B[短时傅里叶变换 STFT]
+    B --&gt; C[标准化处理]
+    C --&gt; D[频率-通道压缩]
+    D --&gt; E[双向LSTM处理]
+    E --&gt; F[频率-通道扩展]
+    F --&gt; G[掩码估计 Sigmoid]
+    G --&gt; H[应用掩码相乘]
+    H --&gt; I[逆STFT重建]
+    I --&gt; J[分离音轨输出]
+
+    subgraph 核心处理模块
+        B --&gt;|n_fft=4096&lt;br&gt;n_hop=1024| C
+        D --&gt;|1x1卷积&lt;br&gt;512通道| E
+        E --&gt;|3层双向LSTM&lt;br&gt;hidden_size=512| F
+        G --&gt;|逐元素相乘| H
+    end
+    
+    subgraph 关键技术点
+        C --&gt;|全局均值方差标准化&lt;br&gt;通道独立处理| D
+        F --&gt;|1x1反卷积&lt;br&gt;恢复原始维度| G
+        I --&gt;|保留混合音频相位| J
+    end
+
+    style A fill:#f9f,stroke:#333
+    style J fill:#f9f,stroke:#333
+    style E fill:#bbf,stroke:#333
+    style G fill:#fbb,stroke:#333
+```
+
 
 
 ---
